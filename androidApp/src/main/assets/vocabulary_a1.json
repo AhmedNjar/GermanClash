@@ -1,0 +1,3002 @@
+[
+  {
+    "id": "de_a1_001",
+    "type": "DER_DIE_DAS",
+    "category": "Food",
+    "prompt": "Apfel",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "تفاحة"
+  },
+  {
+    "id": "de_a1_002",
+    "type": "DER_DIE_DAS",
+    "category": "Food",
+    "prompt": "Banane",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "موزة"
+  },
+  {
+    "id": "de_a1_003",
+    "type": "DER_DIE_DAS",
+    "category": "Food",
+    "prompt": "Brot",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "خبز"
+  },
+  {
+    "id": "de_a1_004",
+    "type": "DER_DIE_DAS",
+    "category": "Food",
+    "prompt": "Kuchen",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "كعكة"
+  },
+  {
+    "id": "de_a1_005",
+    "type": "DER_DIE_DAS",
+    "category": "Food",
+    "prompt": "Ei",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "بيضة"
+  },
+  {
+    "id": "de_a1_006",
+    "type": "DER_DIE_DAS",
+    "category": "Food",
+    "prompt": "Butter",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "زبدة"
+  },
+  {
+    "id": "de_a1_007",
+    "type": "DER_DIE_DAS",
+    "category": "Food",
+    "prompt": "Wurst",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "سجق"
+  },
+  {
+    "id": "de_a1_008",
+    "type": "DER_DIE_DAS",
+    "category": "Food",
+    "prompt": "Käse",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "جبن"
+  },
+  {
+    "id": "de_a1_009",
+    "type": "DER_DIE_DAS",
+    "category": "Food",
+    "prompt": "Tomate",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "طماطم"
+  },
+  {
+    "id": "de_a1_010",
+    "type": "DER_DIE_DAS",
+    "category": "Food",
+    "prompt": "Kartoffel",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "بطاطس"
+  },
+  {
+    "id": "de_a1_011",
+    "type": "DER_DIE_DAS",
+    "category": "Drinks",
+    "prompt": "Wasser",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "ماء"
+  },
+  {
+    "id": "de_a1_012",
+    "type": "DER_DIE_DAS",
+    "category": "Drinks",
+    "prompt": "Kaffee",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "قهوة"
+  },
+  {
+    "id": "de_a1_013",
+    "type": "DER_DIE_DAS",
+    "category": "Drinks",
+    "prompt": "Tee",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "شاي"
+  },
+  {
+    "id": "de_a1_014",
+    "type": "DER_DIE_DAS",
+    "category": "Drinks",
+    "prompt": "Saft",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "عصير"
+  },
+  {
+    "id": "de_a1_015",
+    "type": "DER_DIE_DAS",
+    "category": "Drinks",
+    "prompt": "Milch",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "حليب"
+  },
+  {
+    "id": "de_a1_016",
+    "type": "DER_DIE_DAS",
+    "category": "Drinks",
+    "prompt": "Bier",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "بيرة"
+  },
+  {
+    "id": "de_a1_017",
+    "type": "DER_DIE_DAS",
+    "category": "Family",
+    "prompt": "Vater",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "أب"
+  },
+  {
+    "id": "de_a1_018",
+    "type": "DER_DIE_DAS",
+    "category": "Family",
+    "prompt": "Mutter",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "أم"
+  },
+  {
+    "id": "de_a1_019",
+    "type": "DER_DIE_DAS",
+    "category": "Family",
+    "prompt": "Bruder",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "أخ"
+  },
+  {
+    "id": "de_a1_020",
+    "type": "DER_DIE_DAS",
+    "category": "Family",
+    "prompt": "Schwester",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "أخت"
+  },
+  {
+    "id": "de_a1_021",
+    "type": "DER_DIE_DAS",
+    "category": "Family",
+    "prompt": "Tochter",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "ابنة"
+  },
+  {
+    "id": "de_a1_022",
+    "type": "DER_DIE_DAS",
+    "category": "Family",
+    "prompt": "Sohn",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "ابن"
+  },
+  {
+    "id": "de_a1_023",
+    "type": "DER_DIE_DAS",
+    "category": "Family",
+    "prompt": "Kind",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "طفل"
+  },
+  {
+    "id": "de_a1_024",
+    "type": "DER_DIE_DAS",
+    "category": "Family",
+    "prompt": "Familie",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "عائلة"
+  },
+  {
+    "id": "de_a1_025",
+    "type": "DER_DIE_DAS",
+    "category": "Home",
+    "prompt": "Haus",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "منزل"
+  },
+  {
+    "id": "de_a1_026",
+    "type": "DER_DIE_DAS",
+    "category": "Home",
+    "prompt": "Zimmer",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "غرفة"
+  },
+  {
+    "id": "de_a1_027",
+    "type": "DER_DIE_DAS",
+    "category": "Home",
+    "prompt": "Küche",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "مطبخ"
+  },
+  {
+    "id": "de_a1_028",
+    "type": "DER_DIE_DAS",
+    "category": "Home",
+    "prompt": "Bad",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "حمام"
+  },
+  {
+    "id": "de_a1_029",
+    "type": "DER_DIE_DAS",
+    "category": "Home",
+    "prompt": "Bett",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "سرير"
+  },
+  {
+    "id": "de_a1_030",
+    "type": "DER_DIE_DAS",
+    "category": "Home",
+    "prompt": "Tisch",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "طاولة"
+  },
+  {
+    "id": "de_a1_031",
+    "type": "DER_DIE_DAS",
+    "category": "Home",
+    "prompt": "Stuhl",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "كرسي"
+  },
+  {
+    "id": "de_a1_032",
+    "type": "DER_DIE_DAS",
+    "category": "Home",
+    "prompt": "Fenster",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "نافذة"
+  },
+  {
+    "id": "de_a1_033",
+    "type": "DER_DIE_DAS",
+    "category": "Home",
+    "prompt": "Tür",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "باب"
+  },
+  {
+    "id": "de_a1_034",
+    "type": "DER_DIE_DAS",
+    "category": "Home",
+    "prompt": "Lampe",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "مصباح"
+  },
+  {
+    "id": "de_a1_035",
+    "type": "DER_DIE_DAS",
+    "category": "Home",
+    "prompt": "Sofa",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "أريكة"
+  },
+  {
+    "id": "de_a1_036",
+    "type": "DER_DIE_DAS",
+    "category": "Clothing",
+    "prompt": "Hemd",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "قميص"
+  },
+  {
+    "id": "de_a1_037",
+    "type": "DER_DIE_DAS",
+    "category": "Clothing",
+    "prompt": "Hose",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "بنطلون"
+  },
+  {
+    "id": "de_a1_038",
+    "type": "DER_DIE_DAS",
+    "category": "Clothing",
+    "prompt": "Jacke",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "سترة"
+  },
+  {
+    "id": "de_a1_039",
+    "type": "DER_DIE_DAS",
+    "category": "Clothing",
+    "prompt": "Schuh",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "حذاء"
+  },
+  {
+    "id": "de_a1_040",
+    "type": "DER_DIE_DAS",
+    "category": "Clothing",
+    "prompt": "Mütze",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "قبعة"
+  },
+  {
+    "id": "de_a1_041",
+    "type": "DER_DIE_DAS",
+    "category": "Clothing",
+    "prompt": "Kleid",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "فستان"
+  },
+  {
+    "id": "de_a1_042",
+    "type": "DER_DIE_DAS",
+    "category": "City",
+    "prompt": "Bahnhof",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "محطة القطار"
+  },
+  {
+    "id": "de_a1_043",
+    "type": "DER_DIE_DAS",
+    "category": "City",
+    "prompt": "Flughafen",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "مطار"
+  },
+  {
+    "id": "de_a1_044",
+    "type": "DER_DIE_DAS",
+    "category": "City",
+    "prompt": "Supermarkt",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "سوبر ماركت"
+  },
+  {
+    "id": "de_a1_045",
+    "type": "DER_DIE_DAS",
+    "category": "City",
+    "prompt": "Schule",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "مدرسة"
+  },
+  {
+    "id": "de_a1_046",
+    "type": "DER_DIE_DAS",
+    "category": "City",
+    "prompt": "Universität",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "جامعة"
+  },
+  {
+    "id": "de_a1_047",
+    "type": "DER_DIE_DAS",
+    "category": "City",
+    "prompt": "Apotheke",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "صيدلية"
+  },
+  {
+    "id": "de_a1_048",
+    "type": "DER_DIE_DAS",
+    "category": "City",
+    "prompt": "Bäckerei",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "مخبز"
+  },
+  {
+    "id": "de_a1_049",
+    "type": "DER_DIE_DAS",
+    "category": "City",
+    "prompt": "Restaurant",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "مطعم"
+  },
+  {
+    "id": "de_a1_050",
+    "type": "DER_DIE_DAS",
+    "category": "City",
+    "prompt": "Kino",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "سينما"
+  },
+  {
+    "id": "de_a1_051",
+    "type": "DER_DIE_DAS",
+    "category": "Transport",
+    "prompt": "Auto",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "سيارة"
+  },
+  {
+    "id": "de_a1_052",
+    "type": "DER_DIE_DAS",
+    "category": "Transport",
+    "prompt": "Bus",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "حافلة"
+  },
+  {
+    "id": "de_a1_053",
+    "type": "DER_DIE_DAS",
+    "category": "Transport",
+    "prompt": "Zug",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "قطار"
+  },
+  {
+    "id": "de_a1_054",
+    "type": "DER_DIE_DAS",
+    "category": "Transport",
+    "prompt": "Fahrrad",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "دراجة"
+  },
+  {
+    "id": "de_a1_055",
+    "type": "DER_DIE_DAS",
+    "category": "Transport",
+    "prompt": "Flugzeug",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "طائرة"
+  },
+  {
+    "id": "de_a1_056",
+    "type": "DER_DIE_DAS",
+    "category": "Transport",
+    "prompt": "Schiff",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "سفينة"
+  },
+  {
+    "id": "de_a1_057",
+    "type": "DER_DIE_DAS",
+    "category": "Body",
+    "prompt": "Kopf",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "رأس"
+  },
+  {
+    "id": "de_a1_058",
+    "type": "DER_DIE_DAS",
+    "category": "Body",
+    "prompt": "Hand",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "يد"
+  },
+  {
+    "id": "de_a1_059",
+    "type": "DER_DIE_DAS",
+    "category": "Body",
+    "prompt": "Fuß",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "قدم"
+  },
+  {
+    "id": "de_a1_060",
+    "type": "DER_DIE_DAS",
+    "category": "Body",
+    "prompt": "Auge",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "عين"
+  },
+  {
+    "id": "de_a1_061",
+    "type": "DER_DIE_DAS",
+    "category": "Body",
+    "prompt": "Mund",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "فم"
+  },
+  {
+    "id": "de_a1_062",
+    "type": "DER_DIE_DAS",
+    "category": "Body",
+    "prompt": "Ohr",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "أذن"
+  },
+  {
+    "id": "de_a1_063",
+    "type": "DER_DIE_DAS",
+    "category": "Body",
+    "prompt": "Bauch",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "بطن"
+  },
+  {
+    "id": "de_a1_064",
+    "type": "DER_DIE_DAS",
+    "category": "Body",
+    "prompt": "Arm",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "ذراع"
+  },
+  {
+    "id": "de_a1_065",
+    "type": "DER_DIE_DAS",
+    "category": "Body",
+    "prompt": "Bein",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "ساق"
+  },
+  {
+    "id": "de_a1_066",
+    "type": "DER_DIE_DAS",
+    "category": "School",
+    "prompt": "Buch",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "كتاب"
+  },
+  {
+    "id": "de_a1_067",
+    "type": "DER_DIE_DAS",
+    "category": "School",
+    "prompt": "Heft",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "دفتر"
+  },
+  {
+    "id": "de_a1_068",
+    "type": "DER_DIE_DAS",
+    "category": "School",
+    "prompt": "Kugelschreiber",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "قلم حبر"
+  },
+  {
+    "id": "de_a1_069",
+    "type": "DER_DIE_DAS",
+    "category": "School",
+    "prompt": "Bleistift",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "قلم رصاص"
+  },
+  {
+    "id": "de_a1_070",
+    "type": "DER_DIE_DAS",
+    "category": "School",
+    "prompt": "Tasche",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "حقيبة"
+  },
+  {
+    "id": "de_a1_071",
+    "type": "DER_DIE_DAS",
+    "category": "School",
+    "prompt": "Rucksack",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "حقيبة ظهر"
+  },
+  {
+    "id": "de_a1_072",
+    "type": "DER_DIE_DAS",
+    "category": "Work",
+    "prompt": "Arzt",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "طبيب"
+  },
+  {
+    "id": "de_a1_073",
+    "type": "DER_DIE_DAS",
+    "category": "Work",
+    "prompt": "Lehrer",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "معلم"
+  },
+  {
+    "id": "de_a1_074",
+    "type": "DER_DIE_DAS",
+    "category": "Work",
+    "prompt": "Student",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "طالب"
+  },
+  {
+    "id": "de_a1_075",
+    "type": "DER_DIE_DAS",
+    "category": "Work",
+    "prompt": "Kellner",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "نادل"
+  },
+  {
+    "id": "de_a1_076",
+    "type": "DER_DIE_DAS",
+    "category": "Work",
+    "prompt": "Polizist",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "شرطي"
+  },
+  {
+    "id": "de_a1_077",
+    "type": "DER_DIE_DAS",
+    "category": "Time",
+    "prompt": "Morgen",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "صباح"
+  },
+  {
+    "id": "de_a1_078",
+    "type": "DER_DIE_DAS",
+    "category": "Time",
+    "prompt": "Abend",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "مساء"
+  },
+  {
+    "id": "de_a1_079",
+    "type": "DER_DIE_DAS",
+    "category": "Time",
+    "prompt": "Tag",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "يوم"
+  },
+  {
+    "id": "de_a1_080",
+    "type": "DER_DIE_DAS",
+    "category": "Time",
+    "prompt": "Nacht",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "ليل"
+  },
+  {
+    "id": "de_a1_081",
+    "type": "DER_DIE_DAS",
+    "category": "Time",
+    "prompt": "Woche",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "أسبوع"
+  },
+  {
+    "id": "de_a1_082",
+    "type": "DER_DIE_DAS",
+    "category": "Time",
+    "prompt": "Monat",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "شهر"
+  },
+  {
+    "id": "de_a1_083",
+    "type": "DER_DIE_DAS",
+    "category": "Nature",
+    "prompt": "Baum",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "شجرة"
+  },
+  {
+    "id": "de_a1_084",
+    "type": "DER_DIE_DAS",
+    "category": "Nature",
+    "prompt": "Blume",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "زهرة"
+  },
+  {
+    "id": "de_a1_085",
+    "type": "DER_DIE_DAS",
+    "category": "Nature",
+    "prompt": "Sonne",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "شمس"
+  },
+  {
+    "id": "de_a1_086",
+    "type": "DER_DIE_DAS",
+    "category": "Nature",
+    "prompt": "Mond",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "قمر"
+  },
+  {
+    "id": "de_a1_087",
+    "type": "DER_DIE_DAS",
+    "category": "Nature",
+    "prompt": "Stern",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "نجم"
+  },
+  {
+    "id": "de_a1_088",
+    "type": "DER_DIE_DAS",
+    "category": "Nature",
+    "prompt": "Wald",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "غابة"
+  },
+  {
+    "id": "de_a1_089",
+    "type": "DER_DIE_DAS",
+    "category": "Animals",
+    "prompt": "Hund",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "كلب"
+  },
+  {
+    "id": "de_a1_090",
+    "type": "DER_DIE_DAS",
+    "category": "Animals",
+    "prompt": "Katze",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "قطة"
+  },
+  {
+    "id": "de_a1_091",
+    "type": "DER_DIE_DAS",
+    "category": "Animals",
+    "prompt": "Vogel",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "طائر"
+  },
+  {
+    "id": "de_a1_092",
+    "type": "DER_DIE_DAS",
+    "category": "Animals",
+    "prompt": "Fisch",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "سمكة"
+  },
+  {
+    "id": "de_a1_093",
+    "type": "DER_DIE_DAS",
+    "category": "Objects",
+    "prompt": "Computer",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "حاسوب"
+  },
+  {
+    "id": "de_a1_094",
+    "type": "DER_DIE_DAS",
+    "category": "Objects",
+    "prompt": "Handy",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "هاتف محمول"
+  },
+  {
+    "id": "de_a1_095",
+    "type": "DER_DIE_DAS",
+    "category": "Objects",
+    "prompt": "Fernseher",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "تلفاز"
+  },
+  {
+    "id": "de_a1_096",
+    "type": "DER_DIE_DAS",
+    "category": "Objects",
+    "prompt": "Uhr",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "ساعة"
+  },
+  {
+    "id": "de_a1_097",
+    "type": "DER_DIE_DAS",
+    "category": "Objects",
+    "prompt": "Brille",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "نظارة"
+  },
+  {
+    "id": "de_a1_098",
+    "type": "DER_DIE_DAS",
+    "category": "Objects",
+    "prompt": "Schlüssel",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "der",
+    "translation": "مفتاح"
+  },
+  {
+    "id": "de_a1_099",
+    "type": "DER_DIE_DAS",
+    "category": "Objects",
+    "prompt": "Geld",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "das",
+    "translation": "مال"
+  },
+  {
+    "id": "de_a1_100",
+    "type": "DER_DIE_DAS",
+    "category": "Objects",
+    "prompt": "Zeitung",
+    "imageUrl": null,
+    "options": ["der", "die", "das"],
+    "correctAnswer": "die",
+    "translation": "صحيفة"
+  },
+  {
+    "id": "de_a1_101",
+    "type": "IMAGE_GUESS",
+    "category": "Food",
+    "prompt": "Was ist auf dem Bild?",
+    "imageUrl": "apple",
+    "options": ["Apfel", "Banane", "Orange"],
+    "correctAnswer": "Apfel",
+    "translation": "تفاحة"
+  },
+  {
+    "id": "de_a1_102",
+    "type": "IMAGE_GUESS",
+    "category": "Food",
+    "prompt": "Was siehst du?",
+    "imageUrl": "bread",
+    "options": ["Brot", "Kuchen", "Keks"],
+    "correctAnswer": "Brot",
+    "translation": "خبز"
+  },
+  {
+    "id": "de_a1_103",
+    "type": "IMAGE_GUESS",
+    "category": "Food",
+    "prompt": "Erkennst du das?",
+    "imageUrl": "banana",
+    "options": ["Banane", "Apfel", "Birne"],
+    "correctAnswer": "Banane",
+    "translation": "موزة"
+  },
+  {
+    "id": "de_a1_104",
+    "type": "IMAGE_GUESS",
+    "category": "Food",
+    "prompt": "Was zeigt das Bild?",
+    "imageUrl": "egg",
+    "options": ["Ei", "Käse", "Butter"],
+    "correctAnswer": "Ei",
+    "translation": "بيضة"
+  },
+  {
+    "id": "de_a1_105",
+    "type": "IMAGE_GUESS",
+    "category": "Food",
+    "prompt": "Was ist das?",
+    "imageUrl": "cake",
+    "options": ["Kuchen", "Torte", "Brot"],
+    "correctAnswer": "Kuchen",
+    "translation": "كعكة"
+  },
+  {
+    "id": "de_a1_106",
+    "type": "IMAGE_GUESS",
+    "category": "Food",
+    "prompt": "Was ist das?",
+    "imageUrl": "cheese",
+    "options": ["Käse", "Wurst", "Butter"],
+    "correctAnswer": "Käse",
+    "translation": "جبن"
+  },
+  {
+    "id": "de_a1_107",
+    "type": "IMAGE_GUESS",
+    "category": "Food",
+    "prompt": "Was ist das?",
+    "imageUrl": "sausage",
+    "options": ["Wurst", "Fleisch", "Schinken"],
+    "correctAnswer": "Wurst",
+    "translation": "سجق"
+  },
+  {
+    "id": "de_a1_108",
+    "type": "IMAGE_GUESS",
+    "category": "Food",
+    "prompt": "Was ist das?",
+    "imageUrl": "tomato",
+    "options": ["Tomate", "Gurke", "Paprika"],
+    "correctAnswer": "Tomate",
+    "translation": "طماطم"
+  },
+  {
+    "id": "de_a1_109",
+    "type": "IMAGE_GUESS",
+    "category": "Food",
+    "prompt": "Was ist das?",
+    "imageUrl": "potato",
+    "options": ["Kartoffel", "Zwiebel", "Karotte"],
+    "correctAnswer": "Kartoffel",
+    "translation": "بطاطس"
+  },
+  {
+    "id": "de_a1_110",
+    "type": "IMAGE_GUESS",
+    "category": "Food",
+    "prompt": "Was ist das?",
+    "imageUrl": "carrot",
+    "options": ["Karotte", "Kartoffel", "Gurke"],
+    "correctAnswer": "Karotte",
+    "translation": "جزر"
+  },
+  {
+    "id": "de_a1_111",
+    "type": "IMAGE_GUESS",
+    "category": "Drinks",
+    "prompt": "Was trinkt man hier?",
+    "imageUrl": "coffee",
+    "options": ["Kaffee", "Tee", "Milch"],
+    "correctAnswer": "Kaffee",
+    "translation": "قهوة"
+  },
+  {
+    "id": "de_a1_112",
+    "type": "IMAGE_GUESS",
+    "category": "Drinks",
+    "prompt": "Was ist das?",
+    "imageUrl": "tea",
+    "options": ["Tee", "Kaffee", "Saft"],
+    "correctAnswer": "Tee",
+    "translation": "شاي"
+  },
+  {
+    "id": "de_a1_113",
+    "type": "IMAGE_GUESS",
+    "category": "Drinks",
+    "prompt": "Was ist das?",
+    "imageUrl": "milk",
+    "options": ["Milch", "Wasser", "Saft"],
+    "correctAnswer": "Milch",
+    "translation": "حليب"
+  },
+  {
+    "id": "de_a1_114",
+    "type": "IMAGE_GUESS",
+    "category": "Drinks",
+    "prompt": "Was ist das?",
+    "imageUrl": "water",
+    "options": ["Wasser", "Saft", "Bier"],
+    "correctAnswer": "Wasser",
+    "translation": "ماء"
+  },
+  {
+    "id": "de_a1_115",
+    "type": "IMAGE_GUESS",
+    "category": "Drinks",
+    "prompt": "Was ist das?",
+    "imageUrl": "juice",
+    "options": ["Saft", "Wasser", "Limonade"],
+    "correctAnswer": "Saft",
+    "translation": "عصير"
+  },
+  {
+    "id": "de_a1_116",
+    "type": "IMAGE_GUESS",
+    "category": "Drinks",
+    "prompt": "Was ist das?",
+    "imageUrl": "beer",
+    "options": ["Bier", "Wein", "Saft"],
+    "correctAnswer": "Bier",
+    "translation": "بيرة"
+  },
+  {
+    "id": "de_a1_117",
+    "type": "IMAGE_GUESS",
+    "category": "Home",
+    "prompt": "Was ist das?",
+    "imageUrl": "house",
+    "options": ["Haus", "Wohnung", "Zimmer"],
+    "correctAnswer": "Haus",
+    "translation": "منزل"
+  },
+  {
+    "id": "de_a1_118",
+    "type": "IMAGE_GUESS",
+    "category": "Home",
+    "prompt": "Was ist das?",
+    "imageUrl": "bed",
+    "options": ["Bett", "Sofa", "Stuhl"],
+    "correctAnswer": "Bett",
+    "translation": "سرير"
+  },
+  {
+    "id": "de_a1_119",
+    "type": "IMAGE_GUESS",
+    "category": "Home",
+    "prompt": "Was ist das?",
+    "imageUrl": "chair",
+    "options": ["Stuhl", "Tisch", "Sofa"],
+    "correctAnswer": "Stuhl",
+    "translation": "كرسي"
+  },
+  {
+    "id": "de_a1_120",
+    "type": "IMAGE_GUESS",
+    "category": "Home",
+    "prompt": "Was ist das?",
+    "imageUrl": "table",
+    "options": ["Tisch", "Regal", "Schrank"],
+    "correctAnswer": "Tisch",
+    "translation": "طاولة"
+  },
+  {
+    "id": "de_a1_121",
+    "type": "IMAGE_GUESS",
+    "category": "Home",
+    "prompt": "Was ist das?",
+    "imageUrl": "door",
+    "options": ["Tür", "Fenster", "Tor"],
+    "correctAnswer": "Tür",
+    "translation": "باب"
+  },
+  {
+    "id": "de_a1_122",
+    "type": "IMAGE_GUESS",
+    "category": "Home",
+    "prompt": "Was ist das?",
+    "imageUrl": "window",
+    "options": ["Fenster", "Tür", "Spiegel"],
+    "correctAnswer": "Fenster",
+    "translation": "نافذة"
+  },
+  {
+    "id": "de_a1_123",
+    "type": "IMAGE_GUESS",
+    "category": "Home",
+    "prompt": "Was ist das?",
+    "imageUrl": "lamp",
+    "options": ["Lampe", "Kerze", "Decke"],
+    "correctAnswer": "Lampe",
+    "translation": "مصباح"
+  },
+  {
+    "id": "de_a1_124",
+    "type": "IMAGE_GUESS",
+    "category": "Home",
+    "prompt": "Was ist das?",
+    "imageUrl": "sofa",
+    "options": ["Sofa", "Sessel", "Bett"],
+    "correctAnswer": "Sofa",
+    "translation": "أريكة"
+  },
+  {
+    "id": "de_a1_125",
+    "type": "IMAGE_GUESS",
+    "category": "Home",
+    "prompt": "Was ist das?",
+    "imageUrl": "cup",
+    "options": ["Tasse", "Glas", "Flasche"],
+    "correctAnswer": "Tasse",
+    "translation": "فنجان"
+  },
+  {
+    "id": "de_a1_126",
+    "type": "IMAGE_GUESS",
+    "category": "Home",
+    "prompt": "Was ist das?",
+    "imageUrl": "plate",
+    "options": ["Teller", "Schüssel", "Tasse"],
+    "correctAnswer": "Teller",
+    "translation": "طبق"
+  },
+  {
+    "id": "de_a1_127",
+    "type": "IMAGE_GUESS",
+    "category": "Home",
+    "prompt": "Was ist das?",
+    "imageUrl": "spoon",
+    "options": ["Löffel", "Gabel", "Messer"],
+    "correctAnswer": "Löffel",
+    "translation": "ملعقة"
+  },
+  {
+    "id": "de_a1_128",
+    "type": "IMAGE_GUESS",
+    "category": "Home",
+    "prompt": "Was ist das?",
+    "imageUrl": "fork",
+    "options": ["Gabel", "Löffel", "Messer"],
+    "correctAnswer": "Gabel",
+    "translation": "شوكة"
+  },
+  {
+    "id": "de_a1_129",
+    "type": "IMAGE_GUESS",
+    "category": "Home",
+    "prompt": "Was ist das?",
+    "imageUrl": "knife",
+    "options": ["Messer", "Gabel", "Löffel"],
+    "correctAnswer": "Messer",
+    "translation": "سكين"
+  },
+  {
+    "id": "de_a1_130",
+    "type": "IMAGE_GUESS",
+    "category": "Clothing",
+    "prompt": "Was trägt man da?",
+    "imageUrl": "shirt",
+    "options": ["Hemd", "Jacke", "Pullover"],
+    "correctAnswer": "Hemd",
+    "translation": "قميص"
+  },
+  {
+    "id": "de_a1_131",
+    "type": "IMAGE_GUESS",
+    "category": "Clothing",
+    "prompt": "Was ist das?",
+    "imageUrl": "pants",
+    "options": ["Hose", "Rock", "Shorts"],
+    "correctAnswer": "Hose",
+    "translation": "بنطلون"
+  },
+  {
+    "id": "de_a1_132",
+    "type": "IMAGE_GUESS",
+    "category": "Clothing",
+    "prompt": "Was ist das?",
+    "imageUrl": "jacket",
+    "options": ["Jacke", "Mantel", "Pullover"],
+    "correctAnswer": "Jacke",
+    "translation": "سترة"
+  },
+  {
+    "id": "de_a1_133",
+    "type": "IMAGE_GUESS",
+    "category": "Clothing",
+    "prompt": "Was ist das?",
+    "imageUrl": "shoes",
+    "options": ["Schuhe", "Stiefel", "Sandalen"],
+    "correctAnswer": "Schuhe",
+    "translation": "أحذية"
+  },
+  {
+    "id": "de_a1_134",
+    "type": "IMAGE_GUESS",
+    "category": "Clothing",
+    "prompt": "Was ist das?",
+    "imageUrl": "hat",
+    "options": ["Hut", "Mütze", "Kappe"],
+    "correctAnswer": "Hut",
+    "translation": "قبعة"
+  },
+  {
+    "id": "de_a1_135",
+    "type": "IMAGE_GUESS",
+    "category": "Clothing",
+    "prompt": "Was ist das?",
+    "imageUrl": "dress",
+    "options": ["Kleid", "Rock", "Bluse"],
+    "correctAnswer": "Kleid",
+    "translation": "فستان"
+  },
+  {
+    "id": "de_a1_136",
+    "type": "IMAGE_GUESS",
+    "category": "Clothing",
+    "prompt": "Was ist das?",
+    "imageUrl": "bag",
+    "options": ["Tasche", "Rucksack", "Koffer"],
+    "correctAnswer": "Tasche",
+    "translation": "حقيبة"
+  },
+  {
+    "id": "de_a1_137",
+    "type": "IMAGE_GUESS",
+    "category": "Transport",
+    "prompt": "Womit fährt man?",
+    "imageUrl": "car",
+    "options": ["Auto", "Bus", "Zug"],
+    "correctAnswer": "Auto",
+    "translation": "سيارة"
+  },
+  {
+    "id": "de_a1_138",
+    "type": "IMAGE_GUESS",
+    "category": "Transport",
+    "prompt": "Was ist das?",
+    "imageUrl": "bus",
+    "options": ["Bus", "Auto", "Fahrrad"],
+    "correctAnswer": "Bus",
+    "translation": "حافلة"
+  },
+  {
+    "id": "de_a1_139",
+    "type": "IMAGE_GUESS",
+    "category": "Transport",
+    "prompt": "Was ist das?",
+    "imageUrl": "train",
+    "options": ["Zug", "Bus", "Straßenbahn"],
+    "correctAnswer": "Zug",
+    "translation": "قطار"
+  },
+  {
+    "id": "de_a1_140",
+    "type": "IMAGE_GUESS",
+    "category": "Transport",
+    "prompt": "Was ist das?",
+    "imageUrl": "bicycle",
+    "options": ["Fahrrad", "Motorrad", "Roller"],
+    "correctAnswer": "Fahrrad",
+    "translation": "دراجة"
+  },
+  {
+    "id": "de_a1_141",
+    "type": "IMAGE_GUESS",
+    "category": "Transport",
+    "prompt": "Was ist das?",
+    "imageUrl": "airplane",
+    "options": ["Flugzeug", "Hubschrauber", "Ballon"],
+    "correctAnswer": "Flugzeug",
+    "translation": "طائرة"
+  },
+  {
+    "id": "de_a1_142",
+    "type": "IMAGE_GUESS",
+    "category": "Transport",
+    "prompt": "Was ist das?",
+    "imageUrl": "ship",
+    "options": ["Schiff", "Boot", "Fähre"],
+    "correctAnswer": "Schiff",
+    "translation": "سفينة"
+  },
+  {
+    "id": "de_a1_143",
+    "type": "IMAGE_GUESS",
+    "category": "Transport",
+    "prompt": "Was ist das?",
+    "imageUrl": "motorcycle",
+    "options": ["Motorrad", "Fahrrad", "Auto"],
+    "correctAnswer": "Motorrad",
+    "translation": "دراجة نارية"
+  },
+  {
+    "id": "de_a1_144",
+    "type": "IMAGE_GUESS",
+    "category": "Body",
+    "prompt": "Was ist das?",
+    "imageUrl": "eye",
+    "options": ["Auge", "Ohr", "Nase"],
+    "correctAnswer": "Auge",
+    "translation": "عين"
+  },
+  {
+    "id": "de_a1_145",
+    "type": "IMAGE_GUESS",
+    "category": "Body",
+    "prompt": "Was ist das?",
+    "imageUrl": "ear",
+    "options": ["Ohr", "Auge", "Mund"],
+    "correctAnswer": "Ohr",
+    "translation": "أذن"
+  },
+  {
+    "id": "de_a1_146",
+    "type": "IMAGE_GUESS",
+    "category": "Body",
+    "prompt": "Was ist das?",
+    "imageUrl": "hand",
+    "options": ["Hand", "Fuß", "Arm"],
+    "correctAnswer": "Hand",
+    "translation": "يد"
+  },
+  {
+    "id": "de_a1_147",
+    "type": "IMAGE_GUESS",
+    "category": "Body",
+    "prompt": "Was ist das?",
+    "imageUrl": "foot",
+    "options": ["Fuß", "Hand", "Bein"],
+    "correctAnswer": "Fuß",
+    "translation": "قدم"
+  },
+  {
+    "id": "de_a1_148",
+    "type": "IMAGE_GUESS",
+    "category": "Body",
+    "prompt": "Was ist das?",
+    "imageUrl": "mouth",
+    "options": ["Mund", "Nase", "Ohr"],
+    "correctAnswer": "Mund",
+    "translation": "فم"
+  },
+  {
+    "id": "de_a1_149",
+    "type": "IMAGE_GUESS",
+    "category": "Body",
+    "prompt": "Was ist das?",
+    "imageUrl": "nose",
+    "options": ["Nase", "Mund", "Auge"],
+    "correctAnswer": "Nase",
+    "translation": "أنف"
+  },
+  {
+    "id": "de_a1_150",
+    "type": "IMAGE_GUESS",
+    "category": "Animals",
+    "prompt": "Welches Tier ist das?",
+    "imageUrl": "dog",
+    "options": ["Hund", "Katze", "Maus"],
+    "correctAnswer": "Hund",
+    "translation": "كلب"
+  },
+  {
+    "id": "de_a1_151",
+    "type": "IMAGE_GUESS",
+    "category": "Animals",
+    "prompt": "Welches Tier ist das?",
+    "imageUrl": "cat",
+    "options": ["Katze", "Hund", "Vogel"],
+    "correctAnswer": "Katze",
+    "translation": "قطة"
+  },
+  {
+    "id": "de_a1_152",
+    "type": "IMAGE_GUESS",
+    "category": "Animals",
+    "prompt": "Welches Tier ist das?",
+    "imageUrl": "bird",
+    "options": ["Vogel", "Fisch", "Hund"],
+    "correctAnswer": "Vogel",
+    "translation": "طائر"
+  },
+  {
+    "id": "de_a1_153",
+    "type": "IMAGE_GUESS",
+    "category": "Animals",
+    "prompt": "Welches Tier ist das?",
+    "imageUrl": "fish",
+    "options": ["Fisch", "Vogel", "Katze"],
+    "correctAnswer": "Fisch",
+    "translation": "سمكة"
+  },
+  {
+    "id": "de_a1_154",
+    "type": "IMAGE_GUESS",
+    "category": "Animals",
+    "prompt": "Welches Tier ist das?",
+    "imageUrl": "horse",
+    "options": ["Pferd", "Kuh", "Schaf"],
+    "correctAnswer": "Pferd",
+    "translation": "حصان"
+  },
+  {
+    "id": "de_a1_155",
+    "type": "IMAGE_GUESS",
+    "category": "Animals",
+    "prompt": "Welches Tier ist das?",
+    "imageUrl": "cow",
+    "options": ["Kuh", "Pferd", "Schwein"],
+    "correctAnswer": "Kuh",
+    "translation": "بقرة"
+  },
+  {
+    "id": "de_a1_156",
+    "type": "IMAGE_GUESS",
+    "category": "School",
+    "prompt": "Was ist das?",
+    "imageUrl": "book",
+    "options": ["Buch", "Heft", "Zeitung"],
+    "correctAnswer": "Buch",
+    "translation": "كتاب"
+  },
+  {
+    "id": "de_a1_157",
+    "type": "IMAGE_GUESS",
+    "category": "School",
+    "prompt": "Was ist das?",
+    "imageUrl": "notebook",
+    "options": ["Heft", "Buch", "Block"],
+    "correctAnswer": "Heft",
+    "translation": "دفتر"
+  },
+  {
+    "id": "de_a1_158",
+    "type": "IMAGE_GUESS",
+    "category": "School",
+    "prompt": "Was ist das?",
+    "imageUrl": "pen",
+    "options": ["Kugelschreiber", "Bleistift", "Marker"],
+    "correctAnswer": "Kugelschreiber",
+    "translation": "قلم حبر"
+  },
+  {
+    "id": "de_a1_159",
+    "type": "IMAGE_GUESS",
+    "category": "School",
+    "prompt": "Was ist das?",
+    "imageUrl": "pencil",
+    "options": ["Bleistift", "Kugelschreiber", "Radiergummi"],
+    "correctAnswer": "Bleistift",
+    "translation": "قلم رصاص"
+  },
+  {
+    "id": "de_a1_160",
+    "type": "IMAGE_GUESS",
+    "category": "School",
+    "prompt": "Was ist das?",
+    "imageUrl": "backpack",
+    "options": ["Rucksack", "Tasche", "Koffer"],
+    "correctAnswer": "Rucksack",
+    "translation": "حقيبة ظهر"
+  },
+  {
+    "id": "de_a1_161",
+    "type": "IMAGE_GUESS",
+    "category": "Objects",
+    "prompt": "Was ist das?",
+    "imageUrl": "clock",
+    "options": ["Uhr", "Wecker", "Kalender"],
+    "correctAnswer": "Uhr",
+    "translation": "ساعة"
+  },
+  {
+    "id": "de_a1_162",
+    "type": "IMAGE_GUESS",
+    "category": "Objects",
+    "prompt": "Was ist das?",
+    "imageUrl": "glasses",
+    "options": ["Brille", "Sonnenbrille", "Lupe"],
+    "correctAnswer": "Brille",
+    "translation": "نظارة"
+  },
+  {
+    "id": "de_a1_163",
+    "type": "IMAGE_GUESS",
+    "category": "Objects",
+    "prompt": "Was ist das?",
+    "imageUrl": "key",
+    "options": ["Schlüssel", "Schloss", "Münze"],
+    "correctAnswer": "Schlüssel",
+    "translation": "مفتاح"
+  },
+  {
+    "id": "de_a1_164",
+    "type": "IMAGE_GUESS",
+    "category": "Objects",
+    "prompt": "Was ist das?",
+    "imageUrl": "money",
+    "options": ["Geld", "Karte", "Münze"],
+    "correctAnswer": "Geld",
+    "translation": "مال"
+  },
+  {
+    "id": "de_a1_165",
+    "type": "IMAGE_GUESS",
+    "category": "Objects",
+    "prompt": "Was ist das?",
+    "imageUrl": "newspaper",
+    "options": ["Zeitung", "Zeitschrift", "Buch"],
+    "correctAnswer": "Zeitung",
+    "translation": "صحيفة"
+  },
+  {
+    "id": "de_a1_166",
+    "type": "IMAGE_GUESS",
+    "category": "Objects",
+    "prompt": "Was ist das?",
+    "imageUrl": "umbrella",
+    "options": ["Regenschirm", "Sonnenschirm", "Mantel"],
+    "correctAnswer": "Regenschirm",
+    "translation": "مظلة"
+  },
+  {
+    "id": "de_a1_167",
+    "type": "IMAGE_GUESS",
+    "category": "Objects",
+    "prompt": "Was ist das?",
+    "imageUrl": "guitar",
+    "options": ["Gitarre", "Klavier", "Flöte"],
+    "correctAnswer": "Gitarre",
+    "translation": "غيتار"
+  },
+  {
+    "id": "de_a1_168",
+    "type": "IMAGE_GUESS",
+    "category": "Objects",
+    "prompt": "Was ist das?",
+    "imageUrl": "television",
+    "options": ["Fernseher", "Computer", "Radio"],
+    "correctAnswer": "Fernseher",
+    "translation": "تلفاز"
+  },
+  {
+    "id": "de_a1_169",
+    "type": "IMAGE_GUESS",
+    "category": "Objects",
+    "prompt": "Was ist das?",
+    "imageUrl": "telephone",
+    "options": ["Telefon", "Handy", "Tablet"],
+    "correctAnswer": "Telefon",
+    "translation": "هاتف"
+  },
+  {
+    "id": "de_a1_170",
+    "type": "IMAGE_GUESS",
+    "category": "Objects",
+    "prompt": "Was ist das?",
+    "imageUrl": "camera",
+    "options": ["Kamera", "Fotoapparat", "Handy"],
+    "correctAnswer": "Kamera",
+    "translation": "كاميرا"
+  },
+  {
+    "id": "de_a1_171",
+    "type": "IMAGE_GUESS",
+    "category": "Nature",
+    "prompt": "Was ist das?",
+    "imageUrl": "tree",
+    "options": ["Baum", "Busch", "Blume"],
+    "correctAnswer": "Baum",
+    "translation": "شجرة"
+  },
+  {
+    "id": "de_a1_172",
+    "type": "IMAGE_GUESS",
+    "category": "Nature",
+    "prompt": "Was ist das?",
+    "imageUrl": "flower",
+    "options": ["Blume", "Baum", "Gras"],
+    "correctAnswer": "Blume",
+    "translation": "زهرة"
+  },
+  {
+    "id": "de_a1_173",
+    "type": "IMAGE_GUESS",
+    "category": "Nature",
+    "prompt": "Was ist das?",
+    "imageUrl": "sun",
+    "options": ["Sonne", "Mond", "Stern"],
+    "correctAnswer": "Sonne",
+    "translation": "شمس"
+  },
+  {
+    "id": "de_a1_174",
+    "type": "IMAGE_GUESS",
+    "category": "Nature",
+    "prompt": "Was ist das?",
+    "imageUrl": "moon",
+    "options": ["Mond", "Sonne", "Wolke"],
+    "correctAnswer": "Mond",
+    "translation": "قمر"
+  },
+  {
+    "id": "de_a1_175",
+    "type": "IMAGE_GUESS",
+    "category": "Nature",
+    "prompt": "Was ist das?",
+    "imageUrl": "star",
+    "options": ["Stern", "Mond", "Sonne"],
+    "correctAnswer": "Stern",
+    "translation": "نجم"
+  },
+  {
+    "id": "de_a1_176",
+    "type": "IMAGE_GUESS",
+    "category": "Nature",
+    "prompt": "Was ist das?",
+    "imageUrl": "mountain",
+    "options": ["Berg", "Hügel", "Tal"],
+    "correctAnswer": "Berg",
+    "translation": "جبل"
+  },
+  {
+    "id": "de_a1_177",
+    "type": "IMAGE_GUESS",
+    "category": "City",
+    "prompt": "Wo ist man hier?",
+    "imageUrl": "train_station",
+    "options": ["Bahnhof", "Flughafen", "Bushaltestelle"],
+    "correctAnswer": "Bahnhof",
+    "translation": "محطة القطار"
+  },
+  {
+    "id": "de_a1_178",
+    "type": "IMAGE_GUESS",
+    "category": "City",
+    "prompt": "Was ist das?",
+    "imageUrl": "airport",
+    "options": ["Flughafen", "Bahnhof", "Hafen"],
+    "correctAnswer": "Flughafen",
+    "translation": "مطار"
+  },
+  {
+    "id": "de_a1_179",
+    "type": "IMAGE_GUESS",
+    "category": "City",
+    "prompt": "Was ist das?",
+    "imageUrl": "supermarket",
+    "options": ["Supermarkt", "Markt", "Bäckerei"],
+    "correctAnswer": "Supermarkt",
+    "translation": "سوبر ماركت"
+  },
+  {
+    "id": "de_a1_180",
+    "type": "IMAGE_GUESS",
+    "category": "City",
+    "prompt": "Was ist das?",
+    "imageUrl": "pharmacy",
+    "options": ["Apotheke", "Krankenhaus", "Arztpraxis"],
+    "correctAnswer": "Apotheke",
+    "translation": "صيدلية"
+  },
+  {
+    "id": "de_a1_181",
+    "type": "IMAGE_GUESS",
+    "category": "City",
+    "prompt": "Was ist das?",
+    "imageUrl": "bakery",
+    "options": ["Bäckerei", "Supermarkt", "Restaurant"],
+    "correctAnswer": "Bäckerei",
+    "translation": "مخبز"
+  },
+  {
+    "id": "de_a1_182",
+    "type": "IMAGE_GUESS",
+    "category": "City",
+    "prompt": "Was ist das?",
+    "imageUrl": "restaurant",
+    "options": ["Restaurant", "Café", "Kantine"],
+    "correctAnswer": "Restaurant",
+    "translation": "مطعم"
+  },
+  {
+    "id": "de_a1_183",
+    "type": "IMAGE_GUESS",
+    "category": "City",
+    "prompt": "Was ist das?",
+    "imageUrl": "hospital",
+    "options": ["Krankenhaus", "Apotheke", "Schule"],
+    "correctAnswer": "Krankenhaus",
+    "translation": "مستشفى"
+  },
+  {
+    "id": "de_a1_184",
+    "type": "IMAGE_GUESS",
+    "category": "City",
+    "prompt": "Was ist das?",
+    "imageUrl": "school",
+    "options": ["Schule", "Universität", "Kindergarten"],
+    "correctAnswer": "Schule",
+    "translation": "مدرسة"
+  },
+  {
+    "id": "de_a1_185",
+    "type": "IMAGE_GUESS",
+    "category": "City",
+    "prompt": "Was ist das?",
+    "imageUrl": "church",
+    "options": ["Kirche", "Schloss", "Museum"],
+    "correctAnswer": "Kirche",
+    "translation": "كنيسة"
+  },
+  {
+    "id": "de_a1_186",
+    "type": "IMAGE_GUESS",
+    "category": "Food",
+    "prompt": "Was ist das?",
+    "imageUrl": "ice_cream",
+    "options": ["Eis", "Kuchen", "Schokolade"],
+    "correctAnswer": "Eis",
+    "translation": "آيس كريم"
+  },
+  {
+    "id": "de_a1_187",
+    "type": "IMAGE_GUESS",
+    "category": "Food",
+    "prompt": "Was ist das?",
+    "imageUrl": "chocolate",
+    "options": ["Schokolade", "Bonbon", "Keks"],
+    "correctAnswer": "Schokolade",
+    "translation": "شوكولاتة"
+  },
+  {
+    "id": "de_a1_188",
+    "type": "IMAGE_GUESS",
+    "category": "Food",
+    "prompt": "Was ist das?",
+    "imageUrl": "cookie",
+    "options": ["Keks", "Kuchen", "Brot"],
+    "correctAnswer": "Keks",
+    "translation": "بسكويت"
+  },
+  {
+    "id": "de_a1_189",
+    "type": "IMAGE_GUESS",
+    "category": "Food",
+    "prompt": "Was ist das?",
+    "imageUrl": "jam",
+    "options": ["Marmelade", "Honig", "Butter"],
+    "correctAnswer": "Marmelade",
+    "translation": "مربى"
+  },
+  {
+    "id": "de_a1_190",
+    "type": "IMAGE_GUESS",
+    "category": "Food",
+    "prompt": "Was ist das?",
+    "imageUrl": "honey",
+    "options": ["Honig", "Marmelade", "Zucker"],
+    "correctAnswer": "Honig",
+    "translation": "عسل"
+  },
+  {
+    "id": "de_a1_191",
+    "type": "IMAGE_GUESS",
+    "category": "Kitchen",
+    "prompt": "Was ist das?",
+    "imageUrl": "refrigerator",
+    "options": ["Kühlschrank", "Ofen", "Herd"],
+    "correctAnswer": "Kühlschrank",
+    "translation": "ثلاجة"
+  },
+  {
+    "id": "de_a1_192",
+    "type": "IMAGE_GUESS",
+    "category": "Kitchen",
+    "prompt": "Was ist das?",
+    "imageUrl": "oven",
+    "options": ["Ofen", "Herd", "Mikrowelle"],
+    "correctAnswer": "Ofen",
+    "translation": "فرن"
+  },
+  {
+    "id": "de_a1_193",
+    "type": "IMAGE_GUESS",
+    "category": "Bathroom",
+    "prompt": "Was ist das?",
+    "imageUrl": "toothbrush",
+    "options": ["Zahnbürste", "Zahnpasta", "Seife"],
+    "correctAnswer": "Zahnbürste",
+    "translation": "فرشاة أسنان"
+  },
+  {
+    "id": "de_a1_194",
+    "type": "IMAGE_GUESS",
+    "category": "Bathroom",
+    "prompt": "Was ist das?",
+    "imageUrl": "soap",
+    "options": ["Seife", "Shampoo", "Handtuch"],
+    "correctAnswer": "Seife",
+    "translation": "صابون"
+  },
+  {
+    "id": "de_a1_195",
+    "type": "IMAGE_GUESS",
+    "category": "Bathroom",
+    "prompt": "Was ist das?",
+    "imageUrl": "towel",
+    "options": ["Handtuch", "Seife", "Bürste"],
+    "correctAnswer": "Handtuch",
+    "translation": "منشفة"
+  },
+  {
+    "id": "de_a1_196",
+    "type": "IMAGE_GUESS",
+    "category": "Tools",
+    "prompt": "Was ist das?",
+    "imageUrl": "scissors",
+    "options": ["Schere", "Messer", "Lineal"],
+    "correctAnswer": "Schere",
+    "translation": "مقص"
+  },
+  {
+    "id": "de_a1_197",
+    "type": "IMAGE_GUESS",
+    "category": "Sports",
+    "prompt": "Welcher Sport?",
+    "imageUrl": "football",
+    "options": ["Fußball", "Tennis", "Basketball"],
+    "correctAnswer": "Fußball",
+    "translation": "كرة القدم"
+  },
+  {
+    "id": "de_a1_198",
+    "type": "IMAGE_GUESS",
+    "category": "Sports",
+    "prompt": "Welcher Sport?",
+    "imageUrl": "tennis_racket",
+    "options": ["Tennis", "Fußball", "Golf"],
+    "correctAnswer": "Tennis",
+    "translation": "تنس"
+  },
+  {
+    "id": "de_a1_199",
+    "type": "IMAGE_GUESS",
+    "category": "Weather",
+    "prompt": "Wie ist das Wetter?",
+    "imageUrl": "rain",
+    "options": ["Regen", "Schnee", "Sonne"],
+    "correctAnswer": "Regen",
+    "translation": "مطر"
+  },
+  {
+    "id": "de_a1_200",
+    "type": "IMAGE_GUESS",
+    "category": "Weather",
+    "prompt": "Wie ist das Wetter?",
+    "imageUrl": "snow",
+    "options": ["Schnee", "Regen", "Wind"],
+    "correctAnswer": "Schnee",
+    "translation": "ثلج"
+  },
+  {
+    "id": "de_a1_201",
+    "type": "WORD_COMPLETION",
+    "category": "Greetings",
+    "prompt": "Guten ___!",
+    "imageUrl": null,
+    "options": ["Tag", "Morgen", "Abend"],
+    "correctAnswer": "Tag",
+    "translation": "طاب يومك!"
+  },
+  {
+    "id": "de_a1_202",
+    "type": "WORD_COMPLETION",
+    "category": "Greetings",
+    "prompt": "Auf ___!",
+    "imageUrl": null,
+    "options": ["Wiedersehen", "Wiederhören", "Wiederschauen"],
+    "correctAnswer": "Wiedersehen",
+    "translation": "إلى اللقاء!"
+  },
+  {
+    "id": "de_a1_203",
+    "type": "WORD_COMPLETION",
+    "category": "Greetings",
+    "prompt": "___ Morgen!",
+    "imageUrl": null,
+    "options": ["Guten", "Gute", "Guter"],
+    "correctAnswer": "Guten",
+    "translation": "صباح الخير!"
+  },
+  {
+    "id": "de_a1_204",
+    "type": "WORD_COMPLETION",
+    "category": "Greetings",
+    "prompt": "___ Abend!",
+    "imageUrl": null,
+    "options": ["Guten", "Gute", "Guter"],
+    "correctAnswer": "Guten",
+    "translation": "مساء الخير!"
+  },
+  {
+    "id": "de_a1_205",
+    "type": "WORD_COMPLETION",
+    "category": "Personal Info",
+    "prompt": "Wie ___ du?",
+    "imageUrl": null,
+    "options": ["heißt", "wohnst", "kommst"],
+    "correctAnswer": "heißt",
+    "translation": "ما اسمك؟"
+  },
+  {
+    "id": "de_a1_206",
+    "type": "WORD_COMPLETION",
+    "category": "Personal Info",
+    "prompt": "Ich ___ aus Berlin.",
+    "imageUrl": null,
+    "options": ["komme", "wohne", "arbeite"],
+    "correctAnswer": "komme",
+    "translation": "أنا من برلين."
+  },
+  {
+    "id": "de_a1_207",
+    "type": "WORD_COMPLETION",
+    "category": "Personal Info",
+    "prompt": "Wo ___ du?",
+    "imageUrl": null,
+    "options": ["wohnst", "heißt", "kommst"],
+    "correctAnswer": "wohnst",
+    "translation": "أين تسكن؟"
+  },
+  {
+    "id": "de_a1_208",
+    "type": "WORD_COMPLETION",
+    "category": "Personal Info",
+    "prompt": "Ich ___ 20 Jahre alt.",
+    "imageUrl": null,
+    "options": ["bin", "habe", "heiße"],
+    "correctAnswer": "bin",
+    "translation": "عمري 20 سنة."
+  },
+  {
+    "id": "de_a1_209",
+    "type": "WORD_COMPLETION",
+    "category": "Personal Info",
+    "prompt": "Er ___ aus Spanien.",
+    "imageUrl": null,
+    "options": ["kommt", "wohnt", "heißt"],
+    "correctAnswer": "kommt",
+    "translation": "هو من إسبانيا."
+  },
+  {
+    "id": "de_a1_210",
+    "type": "WORD_COMPLETION",
+    "category": "Personal Info",
+    "prompt": "Ich ___ verheiratet.",
+    "imageUrl": null,
+    "options": ["bin", "habe", "mag"],
+    "correctAnswer": "bin",
+    "translation": "أنا متزوج/ة."
+  },
+  {
+    "id": "de_a1_211",
+    "type": "WORD_COMPLETION",
+    "category": "Family",
+    "prompt": "Meine ___ heißt Anna.",
+    "imageUrl": null,
+    "options": ["Mutter", "Vater", "Bruder"],
+    "correctAnswer": "Mutter",
+    "translation": "أمي اسمها آنا."
+  },
+  {
+    "id": "de_a1_212",
+    "type": "WORD_COMPLETION",
+    "category": "Family",
+    "prompt": "Ich habe einen ___.",
+    "imageUrl": null,
+    "options": ["Bruder", "Schwester", "Mutter"],
+    "correctAnswer": "Bruder",
+    "translation": "لدي أخ."
+  },
+  {
+    "id": "de_a1_213",
+    "type": "WORD_COMPLETION",
+    "category": "Family",
+    "prompt": "Sie hat keine ___.",
+    "imageUrl": null,
+    "options": ["Kinder", "Eltern", "Freunde"],
+    "correctAnswer": "Kinder",
+    "translation": "ليس لديها أطفال."
+  },
+  {
+    "id": "de_a1_214",
+    "type": "WORD_COMPLETION",
+    "category": "Routine",
+    "prompt": "Ich ___ um 7 Uhr auf.",
+    "imageUrl": null,
+    "options": ["stehe", "gehe", "esse"],
+    "correctAnswer": "stehe",
+    "translation": "أستيقظ الساعة 7."
+  },
+  {
+    "id": "de_a1_215",
+    "type": "WORD_COMPLETION",
+    "category": "Routine",
+    "prompt": "Am Abend ___ ich fern.",
+    "imageUrl": null,
+    "options": ["sehe", "lese", "höre"],
+    "correctAnswer": "sehe",
+    "translation": "في المساء أشاهد التلفاز."
+  },
+  {
+    "id": "de_a1_216",
+    "type": "WORD_COMPLETION",
+    "category": "Routine",
+    "prompt": "Ich ___ um 22 Uhr schlafen.",
+    "imageUrl": null,
+    "options": ["gehe", "bin", "habe"],
+    "correctAnswer": "gehe",
+    "translation": "أذهب للنوم الساعة 10."
+  },
+  {
+    "id": "de_a1_217",
+    "type": "WORD_COMPLETION",
+    "category": "Food & Drink",
+    "prompt": "Ich ___ einen Kaffee, bitte.",
+    "imageUrl": null,
+    "options": ["möchte", "esse", "trinke"],
+    "correctAnswer": "möchte",
+    "translation": "أريد قهوة من فضلك."
+  },
+  {
+    "id": "de_a1_218",
+    "type": "WORD_COMPLETION",
+    "category": "Food & Drink",
+    "prompt": "Zum Frühstück ___ ich Brot.",
+    "imageUrl": null,
+    "options": ["esse", "trinke", "kaufe"],
+    "correctAnswer": "esse",
+    "translation": "في الفطور آكل خبزاً."
+  },
+  {
+    "id": "de_a1_219",
+    "type": "WORD_COMPLETION",
+    "category": "Food & Drink",
+    "prompt": "Er ___ gern Pizza.",
+    "imageUrl": null,
+    "options": ["isst", "trinkt", "kocht"],
+    "correctAnswer": "isst",
+    "translation": "هو يحب البيتزا."
+  },
+  {
+    "id": "de_a1_220",
+    "type": "WORD_COMPLETION",
+    "category": "Food & Drink",
+    "prompt": "Wir ___ Wasser.",
+    "imageUrl": null,
+    "options": ["trinken", "essen", "kaufen"],
+    "correctAnswer": "trinken",
+    "translation": "نحن نشرب ماء."
+  },
+  {
+    "id": "de_a1_221",
+    "type": "WORD_COMPLETION",
+    "category": "Shopping",
+    "prompt": "Was ___ das?",
+    "imageUrl": null,
+    "options": ["kostet", "kauft", "bezahlt"],
+    "correctAnswer": "kostet",
+    "translation": "كم ثمن هذا؟"
+  },
+  {
+    "id": "de_a1_222",
+    "type": "WORD_COMPLETION",
+    "category": "Shopping",
+    "prompt": "Ich ___ im Supermarkt ein.",
+    "imageUrl": null,
+    "options": ["kaufe", "verkaufe", "arbeite"],
+    "correctAnswer": "kaufe",
+    "translation": "أشتري من السوبر ماركت."
+  },
+  {
+    "id": "de_a1_223",
+    "type": "WORD_COMPLETION",
+    "category": "Shopping",
+    "prompt": "Das ___ 2 Euro.",
+    "imageUrl": null,
+    "options": ["kostet", "kauft", "preis"],
+    "correctAnswer": "kostet",
+    "translation": "هذا ثمنه 2 يورو."
+  },
+  {
+    "id": "de_a1_224",
+    "type": "WORD_COMPLETION",
+    "category": "Transport",
+    "prompt": "Ich ___ mit dem Bus zur Arbeit.",
+    "imageUrl": null,
+    "options": ["fahre", "gehe", "fliege"],
+    "correctAnswer": "fahre",
+    "translation": "أذهب بالحافلة إلى العمل."
+  },
+  {
+    "id": "de_a1_225",
+    "type": "WORD_COMPLETION",
+    "category": "Transport",
+    "prompt": "Der Zug ___ um 10 Uhr ab.",
+    "imageUrl": null,
+    "options": ["fährt", "kommt", "geht"],
+    "correctAnswer": "fährt",
+    "translation": "القطار يغادر الساعة 10."
+  },
+  {
+    "id": "de_a1_226",
+    "type": "WORD_COMPLETION",
+    "category": "Transport",
+    "prompt": "Wir ___ ein Auto.",
+    "imageUrl": null,
+    "options": ["haben", "sind", "fahren"],
+    "correctAnswer": "haben",
+    "translation": "نحن نملك سيارة."
+  },
+  {
+    "id": "de_a1_227",
+    "type": "WORD_COMPLETION",
+    "category": "Time",
+    "prompt": "Es ist ___ Uhr.",
+    "imageUrl": null,
+    "options": ["acht", "um", "halb"],
+    "correctAnswer": "acht",
+    "translation": "الساعة الثامنة."
+  },
+  {
+    "id": "de_a1_228",
+    "type": "WORD_COMPLETION",
+    "category": "Time",
+    "prompt": "Der Kurs beginnt ___ 9 Uhr.",
+    "imageUrl": null,
+    "options": ["um", "am", "im"],
+    "correctAnswer": "um",
+    "translation": "الدورة تبدأ الساعة 9."
+  },
+  {
+    "id": "de_a1_229",
+    "type": "WORD_COMPLETION",
+    "category": "Time",
+    "prompt": "Heute ist ___.",
+    "imageUrl": null,
+    "options": ["Montag", "Dienstag", "Wochenende"],
+    "correctAnswer": "Montag",
+    "translation": "اليوم الاثنين."
+  },
+  {
+    "id": "de_a1_230",
+    "type": "WORD_COMPLETION",
+    "category": "Time",
+    "prompt": "Wir treffen uns ___ Wochenende.",
+    "imageUrl": null,
+    "options": ["am", "um", "im"],
+    "correctAnswer": "am",
+    "translation": "نلتقي في عطلة نهاية الأسبوع."
+  },
+  {
+    "id": "de_a1_231",
+    "type": "WORD_COMPLETION",
+    "category": "Hobbies",
+    "prompt": "Ich ___ gern Musik.",
+    "imageUrl": null,
+    "options": ["höre", "sehe", "spiele"],
+    "correctAnswer": "höre",
+    "translation": "أحب سماع الموسيقى."
+  },
+  {
+    "id": "de_a1_232",
+    "type": "WORD_COMPLETION",
+    "category": "Hobbies",
+    "prompt": "Er ___ Fußball im Park.",
+    "imageUrl": null,
+    "options": ["spielt", "macht", "geht"],
+    "correctAnswer": "spielt",
+    "translation": "هو يلعب كرة القدم في الحديقة."
+  },
+  {
+    "id": "de_a1_233",
+    "type": "WORD_COMPLETION",
+    "category": "Hobbies",
+    "prompt": "Mein Hobby ist ___.",
+    "imageUrl": null,
+    "options": ["Lesen", "Schwimmen", "Tanzen"],
+    "correctAnswer": "Lesen",
+    "translation": "هوايتي القراءة."
+  },
+  {
+    "id": "de_a1_234",
+    "type": "WORD_COMPLETION",
+    "category": "Abilities",
+    "prompt": "Ich ___ gut Deutsch sprechen.",
+    "imageUrl": null,
+    "options": ["kann", "muss", "will"],
+    "correctAnswer": "kann",
+    "translation": "أستطيع التحدث بالألمانية جيداً."
+  },
+  {
+    "id": "de_a1_235",
+    "type": "WORD_COMPLETION",
+    "category": "Abilities",
+    "prompt": "___ du kochen?",
+    "imageUrl": null,
+    "options": ["Kannst", "Musst", "Willst"],
+    "correctAnswer": "Kannst",
+    "translation": "هل تستطيع الطبخ؟"
+  },
+  {
+    "id": "de_a1_236",
+    "type": "WORD_COMPLETION",
+    "category": "Abilities",
+    "prompt": "Er ___ nicht schwimmen.",
+    "imageUrl": null,
+    "options": ["kann", "muss", "darf"],
+    "correctAnswer": "kann",
+    "translation": "هو لا يستطيع السباحة."
+  },
+  {
+    "id": "de_a1_237",
+    "type": "WORD_COMPLETION",
+    "category": "Obligations",
+    "prompt": "Ich ___ zur Arbeit gehen.",
+    "imageUrl": null,
+    "options": ["muss", "kann", "will"],
+    "correctAnswer": "muss",
+    "translation": "يجب أن أذهب إلى العمل."
+  },
+  {
+    "id": "de_a1_238",
+    "type": "WORD_COMPLETION",
+    "category": "Obligations",
+    "prompt": "Du ___ die Hausaufgaben machen.",
+    "imageUrl": null,
+    "options": ["musst", "kannst", "willst"],
+    "correctAnswer": "musst",
+    "translation": "يجب أن تحل الواجبات."
+  },
+  {
+    "id": "de_a1_239",
+    "type": "WORD_COMPLETION",
+    "category": "Desires",
+    "prompt": "Ich ___ ein Eis essen.",
+    "imageUrl": null,
+    "options": ["will", "kann", "muss"],
+    "correctAnswer": "will",
+    "translation": "أريد أن آكل آيس كريم."
+  },
+  {
+    "id": "de_a1_240",
+    "type": "WORD_COMPLETION",
+    "category": "Desires",
+    "prompt": "___ ihr ins Kino gehen?",
+    "imageUrl": null,
+    "options": ["Wollt", "Könnt", "Müsst"],
+    "correctAnswer": "Wollt",
+    "translation": "هل تريدون الذهاب إلى السينما؟"
+  },
+  {
+    "id": "de_a1_241",
+    "type": "WORD_COMPLETION",
+    "category": "Weather",
+    "prompt": "Heute ist es ___.",
+    "imageUrl": null,
+    "options": ["kalt", "warm", "heiß"],
+    "correctAnswer": "kalt",
+    "translation": "اليوم الجو بارد."
+  },
+  {
+    "id": "de_a1_242",
+    "type": "WORD_COMPLETION",
+    "category": "Weather",
+    "prompt": "Es ___.",
+    "imageUrl": null,
+    "options": ["regnet", "schneit", "windet"],
+    "correctAnswer": "regnet",
+    "translation": "إنها تمطر."
+  },
+  {
+    "id": "de_a1_243",
+    "type": "WORD_COMPLETION",
+    "category": "Weather",
+    "prompt": "Die Sonne ___.",
+    "imageUrl": null,
+    "options": ["scheint", "regnet", "schneit"],
+    "correctAnswer": "scheint",
+    "translation": "الشمس مشرقة."
+  },
+  {
+    "id": "de_a1_244",
+    "type": "WORD_COMPLETION",
+    "category": "Places",
+    "prompt": "Ich gehe in die ___.",
+    "imageUrl": null,
+    "options": ["Schule", "Park", "Arbeit"],
+    "correctAnswer": "Schule",
+    "translation": "أذهب إلى المدرسة."
+  },
+  {
+    "id": "de_a1_245",
+    "type": "WORD_COMPLETION",
+    "category": "Places",
+    "prompt": "Sie arbeitet im ___.",
+    "imageUrl": null,
+    "options": ["Büro", "Restaurant", "Krankenhaus"],
+    "correctAnswer": "Büro",
+    "translation": "هي تعمل في المكتب."
+  },
+  {
+    "id": "de_a1_246",
+    "type": "WORD_COMPLETION",
+    "category": "Places",
+    "prompt": "Der Arzt ist in der ___.",
+    "imageUrl": null,
+    "options": ["Praxis", "Apotheke", "Klinik"],
+    "correctAnswer": "Praxis",
+    "translation": "الطبيب في العيادة."
+  },
+  {
+    "id": "de_a1_247",
+    "type": "WORD_COMPLETION",
+    "category": "Questions",
+    "prompt": "___ heißt das auf Deutsch?",
+    "imageUrl": null,
+    "options": ["Wie", "Was", "Wo"],
+    "correctAnswer": "Wie",
+    "translation": "كيف يقال هذا بالألمانية؟"
+  },
+  {
+    "id": "de_a1_248",
+    "type": "WORD_COMPLETION",
+    "category": "Questions",
+    "prompt": "___ spät ist es?",
+    "imageUrl": null,
+    "options": ["Wie", "Was", "Wo"],
+    "correctAnswer": "Wie",
+    "translation": "كم الساعة؟"
+  },
+  {
+    "id": "de_a1_249",
+    "type": "WORD_COMPLETION",
+    "category": "Questions",
+    "prompt": "___ ist die Toilette?",
+    "imageUrl": null,
+    "options": ["Wo", "Wie", "Wann"],
+    "correctAnswer": "Wo",
+    "translation": "أين الحمام؟"
+  },
+  {
+    "id": "de_a1_250",
+    "type": "WORD_COMPLETION",
+    "category": "Daily life",
+    "prompt": "Ich ___ meine Zähne.",
+    "imageUrl": null,
+    "options": ["putze", "wasche", "bürste"],
+    "correctAnswer": "putze",
+    "translation": "أنظف أسناني."
+  },
+  {
+    "id": "de_a1_251",
+    "type": "WORD_COMPLETION",
+    "category": "Daily life",
+    "prompt": "Vor dem Essen ___ ich die Hände.",
+    "imageUrl": null,
+    "options": ["wasche", "putze", "trockne"],
+    "correctAnswer": "wasche",
+    "translation": "قبل الأكل أغسل يدي."
+  },
+  {
+    "id": "de_a1_252",
+    "type": "WORD_COMPLETION",
+    "category": "Daily life",
+    "prompt": "Ich ___ ein Buch.",
+    "imageUrl": null,
+    "options": ["lese", "sehe", "schreibe"],
+    "correctAnswer": "lese",
+    "translation": "أقرأ كتاباً."
+  },
+  {
+    "id": "de_a1_253",
+    "type": "WORD_COMPLETION",
+    "category": "Daily life",
+    "prompt": "Kannst du bitte das Fenster ___?",
+    "imageUrl": null,
+    "options": ["öffnen", "schließen", "putzen"],
+    "correctAnswer": "öffnen",
+    "translation": "هل يمكنك فتح النافذة؟"
+  },
+  {
+    "id": "de_a1_254",
+    "type": "WORD_COMPLETION",
+    "category": "Work",
+    "prompt": "Was ___ Sie von Beruf?",
+    "imageUrl": null,
+    "options": ["sind", "machen", "arbeiten"],
+    "correctAnswer": "sind",
+    "translation": "ما مهنتك؟"
+  },
+  {
+    "id": "de_a1_255",
+    "type": "WORD_COMPLETION",
+    "category": "Work",
+    "prompt": "Ich ___ Lehrerin.",
+    "imageUrl": null,
+    "options": ["bin", "habe", "arbeite als"],
+    "correctAnswer": "bin",
+    "translation": "أنا معلمة."
+  },
+  {
+    "id": "de_a1_256",
+    "type": "WORD_COMPLETION",
+    "category": "Work",
+    "prompt": "Er ___ in einem Restaurant.",
+    "imageUrl": null,
+    "options": ["arbeitet", "lernt", "studiert"],
+    "correctAnswer": "arbeitet",
+    "translation": "هو يعمل في مطعم."
+  },
+  {
+    "id": "de_a1_257",
+    "type": "WORD_COMPLETION",
+    "category": "Education",
+    "prompt": "Ich ___ Deutsch.",
+    "imageUrl": null,
+    "options": ["lerne", "studiere", "spreche"],
+    "correctAnswer": "lerne",
+    "translation": "أتعلم الألمانية."
+  },
+  {
+    "id": "de_a1_258",
+    "type": "WORD_COMPLETION",
+    "category": "Education",
+    "prompt": "Er ___ an der Universität.",
+    "imageUrl": null,
+    "options": ["studiert", "lernt", "arbeitet"],
+    "correctAnswer": "studiert",
+    "translation": "هو يدرس في الجامعة."
+  },
+  {
+    "id": "de_a1_259",
+    "type": "WORD_COMPLETION",
+    "category": "Communication",
+    "prompt": "Entschuldigung, ich ___ Sie nicht.",
+    "imageUrl": null,
+    "options": ["verstehe", "höre", "sehe"],
+    "correctAnswer": "verstehe",
+    "translation": "عفواً، أنا لا أفهمك."
+  },
+  {
+    "id": "de_a1_260",
+    "type": "WORD_COMPLETION",
+    "category": "Communication",
+    "prompt": "Können Sie das bitte ___?",
+    "imageUrl": null,
+    "options": ["wiederholen", "sagen", "erklären"],
+    "correctAnswer": "wiederholen",
+    "translation": "هل يمكنك تكرار ذلك؟"
+  },
+  {
+    "id": "de_a1_261",
+    "type": "WORD_COMPLETION",
+    "category": "Health",
+    "prompt": "Ich habe ___.",
+    "imageUrl": null,
+    "options": ["Kopfschmerzen", "Husten", "Fieber"],
+    "correctAnswer": "Kopfschmerzen",
+    "translation": "عندي صداع."
+  },
+  {
+    "id": "de_a1_262",
+    "type": "WORD_COMPLETION",
+    "category": "Health",
+    "prompt": "Mir geht es nicht ___.",
+    "imageUrl": null,
+    "options": ["gut", "schlecht", "besser"],
+    "correctAnswer": "gut",
+    "translation": "لست بخير."
+  },
+  {
+    "id": "de_a1_263",
+    "type": "WORD_COMPLETION",
+    "category": "Invitations",
+    "prompt": "Möchtest du ___ Kaffee?",
+    "imageUrl": null,
+    "options": ["einen", "ein", "eine"],
+    "correctAnswer": "einen",
+    "translation": "هل تريد قهوة؟"
+  },
+  {
+    "id": "de_a1_264",
+    "type": "WORD_COMPLETION",
+    "category": "Invitations",
+    "prompt": "Kommst du mit ___ Kino?",
+    "imageUrl": null,
+    "options": ["ins", "im", "in"],
+    "correctAnswer": "ins",
+    "translation": "هل تأتي معي إلى السينما؟"
+  },
+  {
+    "id": "de_a1_265",
+    "type": "WORD_COMPLETION",
+    "category": "Invitations",
+    "prompt": "Lass uns ___ treffen.",
+    "imageUrl": null,
+    "options": ["uns", "euch", "sie"],
+    "correctAnswer": "uns",
+    "translation": "لنتقابل."
+  },
+  {
+    "id": "de_a1_266",
+    "type": "WORD_COMPLETION",
+    "category": "Opinions",
+    "prompt": "Das finde ich ___.",
+    "imageUrl": null,
+    "options": ["gut", "schlecht", "interessant"],
+    "correctAnswer": "gut",
+    "translation": "أجد هذا جيداً."
+  },
+  {
+    "id": "de_a1_267",
+    "type": "WORD_COMPLETION",
+    "category": "Opinions",
+    "prompt": "Mir ___ das.",
+    "imageUrl": null,
+    "options": ["gefällt", "mag", "liebt"],
+    "correctAnswer": "gefällt",
+    "translation": "يعجبني هذا."
+  },
+  {
+    "id": "de_a1_268",
+    "type": "WORD_COMPLETION",
+    "category": "Possession",
+    "prompt": "Das ist ___ Buch.",
+    "imageUrl": null,
+    "options": ["mein", "dein", "sein"],
+    "correctAnswer": "mein",
+    "translation": "هذا كتابي."
+  },
+  {
+    "id": "de_a1_269",
+    "type": "WORD_COMPLETION",
+    "category": "Possession",
+    "prompt": "Ist das ___ Tasche?",
+    "imageUrl": null,
+    "options": ["deine", "meine", "seine"],
+    "correctAnswer": "deine",
+    "translation": "هل هذه حقيبتك؟"
+  },
+  {
+    "id": "de_a1_270",
+    "type": "WORD_COMPLETION",
+    "category": "Numbers",
+    "prompt": "Ich habe ___ Geschwister.",
+    "imageUrl": null,
+    "options": ["zwei", "drei", "keine"],
+    "correctAnswer": "zwei",
+    "translation": "لدي اثنان من الإخوة."
+  },
+  {
+    "id": "de_a1_271",
+    "type": "WORD_COMPLETION",
+    "category": "Numbers",
+    "prompt": "Das kostet ___ Euro.",
+    "imageUrl": null,
+    "options": ["zehn", "fünf", "zwanzig"],
+    "correctAnswer": "zehn",
+    "translation": "ثمنه عشرة يورو."
+  },
+  {
+    "id": "de_a1_272",
+    "type": "WORD_COMPLETION",
+    "category": "Colors",
+    "prompt": "Mein Auto ist ___.",
+    "imageUrl": null,
+    "options": ["rot", "blau", "grün"],
+    "correctAnswer": "rot",
+    "translation": "سيارتي حمراء."
+  },
+  {
+    "id": "de_a1_273",
+    "type": "WORD_COMPLETION",
+    "category": "Colors",
+    "prompt": "Das Kleid ist ___.",
+    "imageUrl": null,
+    "options": ["weiß", "schwarz", "gelb"],
+    "correctAnswer": "weiß",
+    "translation": "الفستان أبيض."
+  },
+  {
+    "id": "de_a1_274",
+    "type": "WORD_COMPLETION",
+    "category": "At Home",
+    "prompt": "Die Katze ist in der ___.",
+    "imageUrl": null,
+    "options": ["Küche", "Bad", "Treppe"],
+    "correctAnswer": "Küche",
+    "translation": "القطة في المطبخ."
+  },
+  {
+    "id": "de_a1_275",
+    "type": "WORD_COMPLETION",
+    "category": "At Home",
+    "prompt": "Ich mache das ___ auf.",
+    "imageUrl": null,
+    "options": ["Fenster", "Tür", "Licht"],
+    "correctAnswer": "Fenster",
+    "translation": "أفتح النافذة."
+  },
+  {
+    "id": "de_a1_276",
+    "type": "WORD_COMPLETION",
+    "category": "At Home",
+    "prompt": "Bitte ___ das Licht an.",
+    "imageUrl": null,
+    "options": ["mach", "schalt", "drück"],
+    "correctAnswer": "mach",
+    "translation": "أشعل الضوء من فضلك."
+  },
+  {
+    "id": "de_a1_277",
+    "type": "WORD_COMPLETION",
+    "category": "On the Phone",
+    "prompt": "___ Müller, guten Tag.",
+    "imageUrl": null,
+    "options": ["Hier", "Ich", "Das"],
+    "correctAnswer": "Hier",
+    "translation": "معكم مولر، طاب يومكم."
+  },
+  {
+    "id": "de_a1_278",
+    "type": "WORD_COMPLETION",
+    "category": "On the Phone",
+    "prompt": "Kann ich eine ___ hinterlassen?",
+    "imageUrl": null,
+    "options": ["Nachricht", "Notiz", "Botschaft"],
+    "correctAnswer": "Nachricht",
+    "translation": "هل يمكنني ترك رسالة؟"
+  },
+  {
+    "id": "de_a1_279",
+    "type": "WORD_COMPLETION",
+    "category": "Polite Requests",
+    "prompt": "Könnten Sie mir bitte ___?",
+    "imageUrl": null,
+    "options": ["helfen", "geben", "sagen"],
+    "correctAnswer": "helfen",
+    "translation": "هل يمكنك مساعدتي؟"
+  },
+  {
+    "id": "de_a1_280",
+    "type": "WORD_COMPLETION",
+    "category": "Polite Requests",
+    "prompt": "Darf ich Sie etwas ___?",
+    "imageUrl": null,
+    "options": ["fragen", "sagen", "bitten"],
+    "correctAnswer": "fragen",
+    "translation": "هل يمكنني أن أسألك شيئاً؟"
+  },
+  {
+    "id": "de_a1_281",
+    "type": "WORD_COMPLETION",
+    "category": "Apologies",
+    "prompt": "Das ___ mir leid.",
+    "imageUrl": null,
+    "options": ["tut", "ist", "macht"],
+    "correctAnswer": "tut",
+    "translation": "أنا آسف."
+  },
+  {
+    "id": "de_a1_282",
+    "type": "WORD_COMPLETION",
+    "category": "Apologies",
+    "prompt": "Entschuldigung, das war ein ___.",
+    "imageUrl": null,
+    "options": ["Fehler", "Problem", "Irrtum"],
+    "correctAnswer": "Fehler",
+    "translation": "آسف، كان هذا خطأ."
+  },
+  {
+    "id": "de_a1_283",
+    "type": "WORD_COMPLETION",
+    "category": "Feelings",
+    "prompt": "Ich bin ___.",
+    "imageUrl": null,
+    "options": ["müde", "hungrig", "durstig"],
+    "correctAnswer": "müde",
+    "translation": "أنا متعب."
+  },
+  {
+    "id": "de_a1_284",
+    "type": "WORD_COMPLETION",
+    "category": "Feelings",
+    "prompt": "Bist du ___?",
+    "imageUrl": null,
+    "options": ["glücklich", "traurig", "krank"],
+    "correctAnswer": "glücklich",
+    "translation": "هل أنت سعيد؟"
+  },
+  {
+    "id": "de_a1_285",
+    "type": "WORD_COMPLETION",
+    "category": "At the Restaurant",
+    "prompt": "Ich ___ zahlen, bitte.",
+    "imageUrl": null,
+    "options": ["möchte", "kann", "will"],
+    "correctAnswer": "möchte",
+    "translation": "أريد أن أدفع من فضلك."
+  },
+  {
+    "id": "de_a1_286",
+    "type": "WORD_COMPLETION",
+    "category": "At the Restaurant",
+    "prompt": "Die Rechnung, ___.",
+    "imageUrl": null,
+    "options": ["bitte", "danke", "gern"],
+    "correctAnswer": "bitte",
+    "translation": "الفاتورة من فضلك."
+  },
+  {
+    "id": "de_a1_287",
+    "type": "WORD_COMPLETION",
+    "category": "Directions",
+    "prompt": "Entschuldigung, wo ist der ___?",
+    "imageUrl": null,
+    "options": ["Bahnhof", "Supermarkt", "Park"],
+    "correctAnswer": "Bahnhof",
+    "translation": "عفواً، أين المحطة؟"
+  },
+  {
+    "id": "de_a1_288",
+    "type": "WORD_COMPLETION",
+    "category": "Directions",
+    "prompt": "Gehen Sie geradeaus und dann ___.",
+    "imageUrl": null,
+    "options": ["links", "rechts", "zurück"],
+    "correctAnswer": "links",
+    "translation": "اذهب مباشرة ثم يساراً."
+  },
+  {
+    "id": "de_a1_289",
+    "type": "WORD_COMPLETION",
+    "category": "Travel",
+    "prompt": "Ich möchte ein ___ nach Berlin.",
+    "imageUrl": null,
+    "options": ["Ticket", "Zimmer", "Auto"],
+    "correctAnswer": "Ticket",
+    "translation": "أريد تذكرة إلى برلين."
+  },
+  {
+    "id": "de_a1_290",
+    "type": "WORD_COMPLETION",
+    "category": "Travel",
+    "prompt": "Wann ___ der nächste Zug?",
+    "imageUrl": null,
+    "options": ["kommt", "fährt", "geht"],
+    "correctAnswer": "kommt",
+    "translation": "متى يصل القطار التالي؟"
+  },
+  {
+    "id": "de_a1_291",
+    "type": "WORD_COMPLETION",
+    "category": "At the Hotel",
+    "prompt": "Ich habe ein ___ reserviert.",
+    "imageUrl": null,
+    "options": ["Zimmer", "Tisch", "Ticket"],
+    "correctAnswer": "Zimmer",
+    "translation": "لقد حجزت غرفة."
+  },
+  {
+    "id": "de_a1_292",
+    "type": "WORD_COMPLETION",
+    "category": "At the Hotel",
+    "prompt": "Was kostet das ___ pro Nacht?",
+    "imageUrl": null,
+    "options": ["Zimmer", "Frühstück", "Parken"],
+    "correctAnswer": "Zimmer",
+    "translation": "كم تكلفة الغرفة لليلة؟"
+  },
+  {
+    "id": "de_a1_293",
+    "type": "WORD_COMPLETION",
+    "category": "Weather",
+    "prompt": "Im Sommer ist es ___.",
+    "imageUrl": null,
+    "options": ["warm", "kalt", "regnerisch"],
+    "correctAnswer": "warm",
+    "translation": "في الصيف الجو دافئ."
+  },
+  {
+    "id": "de_a1_294",
+    "type": "WORD_COMPLETION",
+    "category": "Weather",
+    "prompt": "Morgen wird es ___.",
+    "imageUrl": null,
+    "options": ["sonnig", "neblig", "stürmisch"],
+    "correctAnswer": "sonnig",
+    "translation": "غداً سيكون مشمساً."
+  },
+  {
+    "id": "de_a1_295",
+    "type": "WORD_COMPLETION",
+    "category": "Daily routines",
+    "prompt": "Zuerst frühstücke ich, dann ___ ich zur Arbeit.",
+    "imageUrl": null,
+    "options": ["gehe", "fahre", "laufe"],
+    "correctAnswer": "gehe",
+    "translation": "أولاً أفطر، ثم أذهب إلى العمل."
+  },
+  {
+    "id": "de_a1_296",
+    "type": "WORD_COMPLETION",
+    "category": "Daily routines",
+    "prompt": "Abends ___ ich fern oder lese.",
+    "imageUrl": null,
+    "options": ["sehe", "schaue", "gucke"],
+    "correctAnswer": "sehe",
+    "translation": "في المساء أشاهد التلفاز أو أقرأ."
+  },
+  {
+    "id": "de_a1_297",
+    "type": "WORD_COMPLETION",
+    "category": "Opinions",
+    "prompt": "Das ist ___ interessant.",
+    "imageUrl": null,
+    "options": ["sehr", "viel", "ganz"],
+    "correctAnswer": "sehr",
+    "translation": "هذا ممتع جداً."
+  },
+  {
+    "id": "de_a1_298",
+    "type": "WORD_COMPLETION",
+    "category": "Language",
+    "prompt": "Sprechen Sie ___?",
+    "imageUrl": null,
+    "options": ["Englisch", "Deutsch", "Französisch"],
+    "correctAnswer": "Englisch",
+    "translation": "هل تتكلم الإنجليزية؟"
+  },
+  {
+    "id": "de_a1_299",
+    "type": "WORD_COMPLETION",
+    "category": "Language",
+    "prompt": "Ich lerne ___.",
+    "imageUrl": null,
+    "options": ["Deutsch", "Englisch", "Spanisch"],
+    "correctAnswer": "Deutsch",
+    "translation": "أتعلم الألمانية."
+  },
+  {
+    "id": "de_a1_300",
+    "type": "WORD_COMPLETION",
+    "category": "Emergencies",
+    "prompt": "Hilfe! Ich brauche einen ___.",
+    "imageUrl": null,
+    "options": ["Arzt", "Polizist", "Krankenwagen"],
+    "correctAnswer": "Arzt",
+    "translation": "النجدة! أحتاج طبيباً."
+  }
+]

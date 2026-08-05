@@ -1,0 +1,4 @@
+- [x] Update import in `SoundEffectPlayer.kt`
+- [x] Update `SERVICE_ID` in `AndroidP2PConnectionClient.kt`
+- [x] Suppress `UNUSED_PARAMETER` in `AndroidSoundEffectPlayer.kt`
+- [x] Verify build and unresolved references

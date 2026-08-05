@@ -1,0 +1,6 @@
+- `[x]` Add `@Preview` to `App.kt`
+- `[x]` Add `@Preview` to `HomeScreen.kt`
+- `[x]` Add `@Preview` to `ModeSelectScreen.kt`
+- `[x]` Refactor `RoomScreen.kt` to extract `RoomContent` and add `@Preview`
+- `[x]` Refactor `GameScreen.kt` to extract `GameContent` and add `@Preview`
+- `[x]` Verify build

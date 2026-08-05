@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "396193387125",
+    "project_id": "germanclash",
+    "storage_bucket": "germanclash.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:396193387125:android:f5756e282c8ff81e0f5e3c",
+        "android_client_info": {
+          "package_name": "com.example.germanclash"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVWt2QeApmo4-5gBQYKOi9bPZrQpIEfvE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
