@@ -1,6 +1,6 @@
-package com.app.germanclash.domain.usecase
+package com.example.germanclash.domain.usecase
 
-import com.app.germanclash.domain.repository.GameRepository
+import com.example.germanclash.domain.repository.GameRepository
 
 class StartMatchUseCase(
     private val gameRepository: GameRepository

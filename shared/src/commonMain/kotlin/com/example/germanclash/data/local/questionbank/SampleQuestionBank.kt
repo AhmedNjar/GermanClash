@@ -15,11 +15,7 @@ class SampleQuestionBank : QuestionBank {
     private val questions = listOf(
         Question(
             id = "q1", type = GameType.DER_DIE_DAS, prompt = "___ Hund",
-            options = listOf(
-                AnswerOption("der", "der"),
-                AnswerOption("die", "die"),
-                AnswerOption("das", "das")
-            ),
+            options = listOf(AnswerOption("der", "der"), AnswerOption("die", "die"), AnswerOption("das", "das")),
             correctAnswerId = "der"
         ),
         Question(
@@ -34,9 +30,12 @@ class SampleQuestionBank : QuestionBank {
         )
     )
 
-    override fun nextQuestion(previousId: String?): Question {
+    override fun nextQuestion(previousId: String?, filter: PracticeFilter): Question {
         val currentIndex = questions.indexOfFirst { it.id == previousId }
         val nextIndex = (currentIndex + 1) % questions.size
         return questions[nextIndex]
     }
+
+    override fun availableCategories(): List<String> = emptyList()
+    override fun availableLevels(): List<String> = emptyList()
 }

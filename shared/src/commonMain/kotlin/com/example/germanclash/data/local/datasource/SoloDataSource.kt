@@ -1,11 +1,11 @@
-package com.app.germanclash.data.local.datasource
+package com.example.germanclash.data.local.datasource
 
-import com.app.germanclash.core.contracts.MultiplayerDataSource
-import com.app.germanclash.data.local.questionbank.PracticeFilterState
-import com.app.germanclash.data.local.questionbank.QuestionBank
-import com.app.germanclash.domain.model.GameSession
-import com.app.germanclash.domain.model.Player
-import com.app.germanclash.domain.model.RoundResult
+import com.example.germanclash.core.contracts.MultiplayerDataSource
+import com.example.germanclash.data.local.questionbank.PracticeFilterState
+import com.example.germanclash.data.local.questionbank.QuestionBank
+import com.example.germanclash.domain.model.GameSession
+import com.example.germanclash.domain.model.Player
+import com.example.germanclash.domain.model.RoundResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

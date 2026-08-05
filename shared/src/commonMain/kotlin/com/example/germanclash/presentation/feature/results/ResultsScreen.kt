@@ -1,4 +1,4 @@
-package com.app.germanclash.presentation.feature.results
+package com.example.germanclash.presentation.feature.results
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,10 +17,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.app.germanclash.presentation.common.AnswerState
-import com.app.germanclash.presentation.common.ConfettiOverlay
-import com.app.germanclash.presentation.common.JuicyButton
-import com.app.germanclash.presentation.common.SectionCard
+import com.example.germanclash.presentation.common.AnswerState
+import com.example.germanclash.presentation.common.ConfettiOverlay
+import com.example.germanclash.presentation.common.JuicyButton
+import com.example.germanclash.presentation.common.SectionCard
 
 private const val CONFETTI_ACCURACY_THRESHOLD = 70
 

@@ -11,27 +11,32 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.germanclash.domain.model.AnswerOption
+import com.example.germanclash.domain.model.ConnectionStatus
 import com.example.germanclash.domain.model.GameType
-import com.example.germanclash.domain.model.Question
 import com.example.germanclash.presentation.common.AnswerState
 import com.example.germanclash.presentation.common.ConfettiOverlay
 import com.example.germanclash.presentation.common.CountdownTimerRing
 import com.example.germanclash.presentation.common.JuicyButton
 import com.example.germanclash.presentation.common.SoundEffectPlayer
+import com.example.germanclash.presentation.theme.GameColors
 
 @Composable
 fun GameScreen(
     viewModel: GameViewModel,
     soundPlayer: SoundEffectPlayer,
-    onNavigateToResults: (String) -> Unit
+    onNavigateToResults: (roomId: String, score: Int, correctCount: Int, totalCount: Int) -> Unit
 ) {
     val state by viewModel.state.collectAsState()
     var confettiTrigger by remember { mutableIntStateOf(0) }
@@ -49,29 +54,23 @@ fun GameScreen(
                     }
                 )
                 is GameEffect.PlaySound -> soundPlayer.play(effect.sound)
-                GameEffect.ShowConfetti -> confettiTrigger++
-                is GameEffect.NavigateToResults -> onNavigateToResults(effect.roomId)
+                is GameEffect.ShowConfetti -> confettiTrigger++
+                is GameEffect.NavigateToResults -> onNavigateToResults(
+                    effect.roomId, effect.finalScore, effect.correctCount, effect.totalCount
+                )
+                is GameEffect.ShowScorePopup -> Unit
+                is GameEffect.ShowStreakMilestone -> Unit
                 is GameEffect.ShowToast -> Unit // wire to a Snackbar/Toast host at the app level
             }
         }
     }
 
-    GameContent(
-        state = state,
-        confettiTrigger = confettiTrigger,
-        onIntent = viewModel::onIntent
-    )
-}
-
-@Composable
-fun GameContent(
-    state: GameUiState,
-    confettiTrigger: Int,
-    onIntent: (GameIntent) -> Unit
-) {
     Box(modifier = Modifier.fillMaxSize()) {
         if (state.isLoading) {
-            CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+            CircularProgressIndicator(
+                color = GameColors.TitleAccent,
+                modifier = Modifier.align(Alignment.Center)
+            )
         } else {
             Column(
                 modifier = Modifier
@@ -79,6 +78,22 @@ fun GameContent(
                     .padding(24.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                if (state.connectionStatus == ConnectionStatus.RECONNECTING) {
+                    Text(
+                        text = "Reconnecting\u2026",
+                        color = GameColors.WrongRed,
+                        modifier = Modifier.padding(bottom = 12.dp)
+                    )
+                }
+
+                if (state.sessionLength != null) {
+                    Text(
+                        text = "Question ${state.currentQuestionNumber} of ${state.sessionLength}",
+                        color = GameColors.TitleAccent,
+                        modifier = Modifier.padding(bottom = 12.dp)
+                    )
+                }
+
                 CountdownTimerRing(
                     progress = state.timerProgress,
                     secondsRemaining = (state.timeRemainingMs / 1000).toInt(),
@@ -88,47 +103,51 @@ fun GameContent(
                 state.currentQuestion?.let { question ->
                     Text(text = question.prompt, modifier = Modifier.padding(bottom = 32.dp))
 
-                    when (state.gameType) {
-                        GameType.SENTENCE_BUILDER -> {
-                            SentenceBuilderContent(
-                                wordBank = state.wordBank,
-                                assembledWords = state.assembledWords,
-                                isLocked = state.isAnswerLocked,
-                                onWordTapped = { word -> onIntent(GameIntent.SelectWord(word)) },
-                                onRemoveLastTapped = { onIntent(GameIntent.RemoveLastWord) }
-                            )
-                        }
-                        GameType.MATCH_PAIRS -> {
-                            MatchPairsContent(
-                                cards = state.matchCards,
-                                flippedCardIds = state.flippedCardIds,
-                                onCardTapped = { cardId -> onIntent(GameIntent.FlipCard(cardId)) }
-                            )
-                        }
-                        else -> {
-                            LazyVerticalGrid(
-                                columns = GridCells.Fixed(2),
-                                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                                verticalArrangement = Arrangement.spacedBy(12.dp)
-                            ) {
-                                items(question.options) { option ->
-                                    val answerState = when {
-                                        state.roundResult != null && option.id == state.roundResult.correctAnswerId ->
-                                            AnswerState.CORRECT
-                                        state.roundResult != null && option.id == state.selectedAnswerId ->
-                                            AnswerState.WRONG
-                                        option.id == state.selectedAnswerId -> AnswerState.SELECTED
-                                        else -> AnswerState.IDLE
-                                    }
-                                    JuicyButton(
-                                        text = option.text,
-                                        state = answerState,
-                                        onClick = { onIntent(GameIntent.SelectAnswer(option.id)) },
-                                        modifier = Modifier.fillMaxWidth()
-                                    )
+                    if (state.gameType == GameType.SENTENCE_BUILDER) {
+                        SentenceBuilderContent(
+                            wordBank = state.wordBank,
+                            assembledWords = state.assembledWords,
+                            isLocked = state.isAnswerLocked,
+                            onWordTapped = { word -> viewModel.onIntent(GameIntent.SelectWord(word)) },
+                            onRemoveLastTapped = { viewModel.onIntent(GameIntent.RemoveLastWord) }
+                        )
+                    } else if (state.gameType == GameType.MATCH_PAIRS) {
+                        MatchPairsContent(
+                            cards = state.matchCards,
+                            flippedCardIds = state.flippedCardIds,
+                            onCardTapped = { cardId -> viewModel.onIntent(GameIntent.FlipCard(cardId)) }
+                        )
+                    } else {
+                        LazyVerticalGrid(
+                            columns = GridCells.Fixed(2),
+                            horizontalArrangement = Arrangement.spacedBy(12.dp),
+                            verticalArrangement = Arrangement.spacedBy(12.dp)
+                        ) {
+                            items(question.options) { option ->
+                                val answerState = when {
+                                    state.roundResult != null && option.id == state.roundResult?.correctAnswerId ->
+                                        AnswerState.CORRECT
+                                    state.roundResult != null && option.id == state.selectedAnswerId ->
+                                        AnswerState.WRONG
+                                    option.id == state.selectedAnswerId -> AnswerState.SELECTED
+                                    else -> AnswerState.IDLE
                                 }
+                                JuicyButton(
+                                    text = option.text,
+                                    state = answerState,
+                                    onClick = { viewModel.onIntent(GameIntent.SelectAnswer(option.id)) },
+                                    modifier = Modifier.fillMaxWidth()
+                                )
                             }
                         }
+                    }
+
+                    if (state.roundResult?.wasCorrect == false && question.translation != null) {
+                        Text(
+                            text = "\uD83D\uDCA1 ${question.translation}",
+                            color = GameColors.TitleAccent,
+                            modifier = Modifier.padding(top = 24.dp)
+                        )
                     }
                 }
             }
@@ -139,28 +158,4 @@ fun GameContent(
             modifier = Modifier.fillMaxSize()
         )
     }
-}
-
-@Composable
-@Preview
-fun GameScreenPreview() {
-    GameContent(
-        state = GameUiState(
-            isLoading = false,
-            currentQuestion = Question(
-                id = "q1",
-                type = GameType.DER_DIE_DAS,
-                prompt = "___ Apfel",
-                options = listOf(
-                    AnswerOption("der", "der"),
-                    AnswerOption("die", "die"),
-                    AnswerOption("das", "das")
-                )
-            ),
-            timeRemainingMs = 7500,
-            timeLimitMs = 10000
-        ),
-        confettiTrigger = 0,
-        onIntent = {}
-    )
 }

@@ -1,4 +1,4 @@
-package com.app.germanclash.presentation.theme
+package com.example.germanclash.presentation.theme
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

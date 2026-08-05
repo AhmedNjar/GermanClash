@@ -14,4 +14,6 @@ interface GameRepository {
     fun observeSession(roomId: String): Flow<GameSession>
     suspend fun submitAnswer(roomId: String, answerId: String): RoundResult
     suspend fun joinRoom(roomId: String, playerId: String): Result<Unit>
+    suspend fun advanceToNextQuestion(roomId: String)
+    suspend fun startMatch(roomId: String)
 }

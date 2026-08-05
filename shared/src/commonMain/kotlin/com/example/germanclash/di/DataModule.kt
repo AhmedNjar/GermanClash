@@ -1,10 +1,9 @@
 package com.example.germanclash.di
 
-import com.example.germanclash.data.remote.datasource.SoloDataSource
 import com.example.germanclash.core.contracts.MultiplayerDataSource
 import com.example.germanclash.data.local.datasource.NearbyP2PDataSource
-import com.example.germanclash.data.local.questionbank.QuestionBank
-import com.example.germanclash.data.local.questionbank.SampleQuestionBank
+import com.example.germanclash.data.local.datasource.SoloDataSource
+import com.example.germanclash.data.local.questionbank.PracticeFilterState
 import com.example.germanclash.data.local.serialization.P2PMessageCodec
 import com.example.germanclash.data.remote.datasource.FirestoreDataSource
 import com.example.germanclash.data.remote.mapper.GameSessionMapper
@@ -22,14 +21,17 @@ val SOLO_SOURCE = named("solo")
 val dataModule = module {
     single { GameSessionMapper() }
     single { P2PMessageCodec() }
+    single { PracticeFilterState() }
     // QuestionBank is bound in androidModule (AndroidAssetQuestionBank) since
     // loading the bundled JSON assets needs a Context.
 
     single<MultiplayerDataSource>(ONLINE_SOURCE) { FirestoreDataSource(mapper = get()) }
     single<MultiplayerDataSource>(OFFLINE_SOURCE) {
-        NearbyP2PDataSource(connectionClient = get(), codec = get(), scope = get())
+        NearbyP2PDataSource(connectionClient = get(), codec = get(), questionBank = get(), scope = get())
     }
-    single<MultiplayerDataSource>(SOLO_SOURCE) { SoloDataSource(questionBank = get()) }
+    single<MultiplayerDataSource>(SOLO_SOURCE) {
+        SoloDataSource(questionBank = get(), practiceFilterState = get())
+    }
 
     single<GameRepository> {
         GameRepositoryImpl(
@@ -39,4 +41,3 @@ val dataModule = module {
         )
     }
 }
-

@@ -1,14 +1,13 @@
 package com.example.germanclash.data.local.questionbank
 
-import com.example.germanclash.data.local.questionbank.VocabularyQuestionDto
 import com.example.germanclash.domain.model.AnswerOption
 import com.example.germanclash.domain.model.GameType
 import com.example.germanclash.domain.model.Question
 
 /**
- * category/translation from the JSON aren't used yet - Question has no home
- * for them today. Worth adding if you want category filtering (e.g. an
- * A1-only or "Animals only" practice mode) or an Arabic hint on a wrong answer.
+ * category is used for filtering (PracticeFilter) but stays out of the
+ * domain Question - it's a data-layer-only concern. translation now maps
+ * straight through for the wrong-answer hint.
  */
 fun VocabularyQuestionDto.toDomainQuestion(): Question = Question(
     id = id,
@@ -16,5 +15,6 @@ fun VocabularyQuestionDto.toDomainQuestion(): Question = Question(
     prompt = prompt,
     imageUrl = imageUrl,
     options = options.map { AnswerOption(id = it, text = it) },
-    correctAnswerId = correctAnswer
+    correctAnswerId = correctAnswer,
+    translation = translation
 )

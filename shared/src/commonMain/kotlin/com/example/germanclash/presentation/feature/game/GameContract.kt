@@ -1,10 +1,10 @@
 package com.example.germanclash.presentation.feature.game
 
+import com.example.germanclash.domain.model.ConnectionStatus
 import com.example.germanclash.domain.model.GameType
 import com.example.germanclash.domain.model.Player
 import com.example.germanclash.domain.model.Question
 import com.example.germanclash.domain.model.RoundResult
-
 
 /**
  * Single immutable snapshot of the Game screen at any point in time.
@@ -26,6 +26,9 @@ data class GameUiState(
     val matchCards: List<MatchCard> = emptyList(),  // MATCH_PAIRS: the shuffled deck
     val flippedCardIds: List<String> = emptyList(), // MATCH_PAIRS: currently face-up, unmatched
     val isEvaluatingMismatch: Boolean = false,      // MATCH_PAIRS: brief lock while a wrong pair is shown
+    val currentQuestionNumber: Int = 0,   // 1-indexed - for "Question X of Y"
+    val sessionLength: Int? = null,       // null = unbounded (Firestore/Nearby today); a number ends on Results
+    val connectionStatus: ConnectionStatus = ConnectionStatus.CONNECTED,
     val error: String? = null
 ) {
     val timerProgress: Float
@@ -68,8 +71,15 @@ sealed interface GameIntent {
 sealed interface GameEffect {
     data class PlayHaptic(val pattern: HapticPattern) : GameEffect
     data class PlaySound(val sound: SoundEffect) : GameEffect
-    data object ShowConfetti : GameEffect
-    data class NavigateToResults(val roomId: String) : GameEffect
+    data class ShowConfetti(val big: Boolean = false) : GameEffect
+    data class ShowScorePopup(val points: Int, val answerId: String) : GameEffect
+    data class ShowStreakMilestone(val streak: Int) : GameEffect
+    data class NavigateToResults(
+        val roomId: String,
+        val finalScore: Int,
+        val correctCount: Int,
+        val totalCount: Int
+    ) : GameEffect
     data class ShowToast(val message: String) : GameEffect
 }
 

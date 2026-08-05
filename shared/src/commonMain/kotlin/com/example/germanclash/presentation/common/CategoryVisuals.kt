@@ -1,4 +1,4 @@
-package com.app.germanclash.presentation.common
+package com.example.germanclash.presentation.common
 
 import androidx.compose.ui.graphics.Color
 

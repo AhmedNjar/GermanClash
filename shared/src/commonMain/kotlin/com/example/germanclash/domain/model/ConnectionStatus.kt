@@ -1,4 +1,4 @@
-package com.app.germanclash.domain.model
+package com.example.germanclash.domain.model
 
 import kotlinx.serialization.Serializable
 

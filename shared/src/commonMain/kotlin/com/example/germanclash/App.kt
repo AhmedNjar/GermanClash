@@ -24,10 +24,8 @@ fun App() {
             // In a real app, these would come from an Auth/Session manager.
             // Using remember ensures they persist across navigation within the same session.
             val localPlayerId = remember { "PLAYER_${(0..99999).random()}" }
-            val friendsRoomId = remember { "LOCAL_DEMO_ROOM" }
 
             GermanClashNavHost(
-                friendsRoomId = friendsRoomId,
                 localPlayerId = localPlayerId,
                 soundPlayer = soundPlayer
             )

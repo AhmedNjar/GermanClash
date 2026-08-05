@@ -1,8 +1,7 @@
 package com.example.germanclash.data.remote.datasource
 
-import com.example.germanclash.data.remote.dto.GameSessionDto
-import com.example.germanclash.data.remote.dto.RoundResultDto
 import com.example.germanclash.core.contracts.MultiplayerDataSource
+import com.example.germanclash.data.remote.dto.GameSessionDto
 import com.example.germanclash.data.remote.mapper.GameSessionMapper
 import com.example.germanclash.domain.model.GameSession
 import com.example.germanclash.domain.model.RoundResult
@@ -13,7 +12,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.mapNotNull
-
 
 /**
  * Online transport. Scoring happens server-side (a Cloud Function reads the
@@ -49,8 +47,8 @@ class FirestoreDataSource(
         // round can't be mistaken for this one's.
         return sessionRef.snapshots
             .mapNotNull { snapshot -> snapshot.data<GameSessionDto?>()?.lastResults?.get(playerId) }
-            .mapNotNull<RoundResultDto, RoundResultDto> { resultDto -> resultDto.takeIf { it.questionId == questionId } }
-            .map<RoundResultDto, RoundResult> { resultDto -> mapper.toRoundResult(resultDto) }
+            .mapNotNull { resultDto -> resultDto.takeIf { it.questionId == questionId } }
+            .map { resultDto -> mapper.toRoundResult(resultDto) }
             .first()
     }
 
@@ -58,7 +56,19 @@ class FirestoreDataSource(
         sessions.document(roomId).collection("players").document(playerId)
             .set(mapOf("id" to playerId, "score" to 0, "isReady" to true))
         true
-    } catch (_: Exception) {
+    } catch (e: Exception) {
         false
+    }
+
+    override suspend fun advanceToNextQuestion(roomId: String) {
+        // No-op online: the next question is chosen server-side (Cloud Function
+        // or host client) and arrives through observeSession() for everyone.
+    }
+
+    override suspend fun startMatch(roomId: String) {
+        // No-op: a real online host loop needs a Cloud Function (or a
+        // designated host client) to write the first currentQuestion into
+        // Firestore - that doesn't exist yet, and this transport isn't
+        // currently reachable from the app's UI regardless.
     }
 }

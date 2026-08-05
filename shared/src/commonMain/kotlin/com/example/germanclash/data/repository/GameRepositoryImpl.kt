@@ -37,6 +37,12 @@ class GameRepositoryImpl(
             Result.Error("Could not join room $roomId")
         }
 
+    override suspend fun advanceToNextQuestion(roomId: String) =
+        sourceFor(roomId).advanceToNextQuestion(roomId)
+
+    override suspend fun startMatch(roomId: String) =
+        sourceFor(roomId).startMatch(roomId)
+
     companion object {
         private const val LOCAL_ROOM_PREFIX = "LOCAL_"
         private const val SOLO_ROOM_PREFIX = "SOLO_"

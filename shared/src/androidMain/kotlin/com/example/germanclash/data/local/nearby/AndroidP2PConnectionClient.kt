@@ -1,7 +1,9 @@
 package com.example.germanclash.data.local.nearby
 
 import android.content.Context
+import com.example.germanclash.core.contracts.IncomingPayload
 import com.example.germanclash.core.contracts.P2PConnectionClient
+import com.example.germanclash.core.contracts.P2PConnectionEvent
 import com.google.android.gms.nearby.Nearby
 import com.google.android.gms.nearby.connection.AdvertisingOptions
 import com.google.android.gms.nearby.connection.ConnectionInfo
@@ -18,38 +20,50 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 
 /**
- * NOTE: runtime permission requests (BLUETOOTH_ADVERTISE/CONNECT/SCAN,
- * NEARBY_WIFI_DEVICES) are the caller's responsibility - this class assumes
- * they're already granted by the time startAdvertising/startDiscovery runs.
+ * Android implementation of P2PConnectionClient using Google Nearby Connections.
+ * Handles the mapping between Nearby's callback-based API and the shared Flow-based contract.
  */
 class AndroidP2PConnectionClient(
     context: Context
 ) : P2PConnectionClient {
 
     private val connectionsClient = Nearby.getConnectionsClient(context)
-    private val connectedEndpoints = mutableSetOf<String>()
-    private val incoming = MutableSharedFlow<ByteArray>(extraBufferCapacity = 16)
+    private val incoming = MutableSharedFlow<IncomingPayload>(extraBufferCapacity = 16)
+    private val events = MutableSharedFlow<P2PConnectionEvent>(extraBufferCapacity = 16)
 
     private val payloadCallback = object : PayloadCallback() {
         override fun onPayloadReceived(endpointId: String, payload: Payload) {
-            payload.asBytes()?.let { bytes -> incoming.tryEmit(bytes) }
+            payload.asBytes()?.let { bytes -> 
+                incoming.tryEmit(IncomingPayload(endpointId, bytes)) 
+            }
         }
         override fun onPayloadTransferUpdate(endpointId: String, update: PayloadTransferUpdate) = Unit
     }
 
     private val connectionLifecycleCallback = object : ConnectionLifecycleCallback() {
         override fun onConnectionInitiated(endpointId: String, info: ConnectionInfo) {
+            // Auto-accept every incoming connection - the hello handshake
+            // handled at the DataSource layer validates the playerId.
             connectionsClient.acceptConnection(endpointId, payloadCallback)
         }
+
         override fun onConnectionResult(endpointId: String, result: ConnectionResolution) {
-            if (result.status.isSuccess) connectedEndpoints += endpointId
+            if (result.status.isSuccess) {
+                events.tryEmit(P2PConnectionEvent.Connected(endpointId))
+            }
         }
+
         override fun onDisconnected(endpointId: String) {
-            connectedEndpoints -= endpointId
+            events.tryEmit(P2PConnectionEvent.Disconnected(endpointId))
         }
     }
 
-    override fun incomingPayloads(): Flow<ByteArray> = incoming
+    override fun incomingPayloads(): Flow<IncomingPayload> = incoming
+    override fun connectionEvents(): Flow<P2PConnectionEvent> = events
+
+    override suspend fun requestConnection(endpointId: String, localDisplayName: String) {
+        connectionsClient.requestConnection(localDisplayName, endpointId, connectionLifecycleCallback)
+    }
 
     override suspend fun sendPayload(endpointId: String, bytes: ByteArray) {
         connectionsClient.sendPayload(endpointId, Payload.fromBytes(bytes))
@@ -76,7 +90,8 @@ class AndroidP2PConnectionClient(
 
     override fun disconnect() {
         connectionsClient.stopAllEndpoints()
-        connectedEndpoints.clear()
+        connectionsClient.stopAdvertising()
+        connectionsClient.stopDiscovery()
     }
 
     companion object {

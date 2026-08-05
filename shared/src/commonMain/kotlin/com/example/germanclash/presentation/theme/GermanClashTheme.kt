@@ -1,4 +1,4 @@
-package com.app.germanclash.presentation.theme
+package com.example.germanclash.presentation.theme
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme

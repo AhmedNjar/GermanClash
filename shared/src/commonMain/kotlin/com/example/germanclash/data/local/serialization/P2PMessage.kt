@@ -1,6 +1,7 @@
 package com.example.germanclash.data.local.serialization
 
 import com.example.germanclash.domain.model.GameSession
+import com.example.germanclash.domain.model.RoundResult
 import kotlinx.serialization.Serializable
 
 /**
@@ -15,4 +16,14 @@ sealed interface P2PMessage {
 
     @Serializable
     data class AnswerSubmitted(val playerId: String, val answerId: String) : P2PMessage
+
+    @Serializable
+    data class Hello(val playerId: String, val displayName: String) : P2PMessage
+
+    @Serializable
+    data class RoundResultMessage(
+        val playerId: String,
+        val questionId: String,
+        val result: RoundResult
+    ) : P2PMessage
 }

@@ -1,4 +1,4 @@
-package com.app.germanclash.data.local.questionbank
+package com.example.germanclash.data.local.questionbank
 
 /**
  * level/category null means "no restriction" - the practice pool includes
