@@ -2,11 +2,11 @@ package com.example.germanclash.presentation.feature.game
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.germanclash.domain.model.GameType
-import com.example.germanclash.domain.model.Question
-import com.example.germanclash.domain.model.RoundResult
+import com.example.germanclash.domain.model.*
 import com.example.germanclash.domain.usecase.AdvanceToNextQuestionUseCase
 import com.example.germanclash.domain.usecase.ObserveGameSessionUseCase
+import com.example.germanclash.domain.usecase.RecordAnswerStatUseCase
+import com.example.germanclash.domain.usecase.RecordSessionStatsUseCase
 import com.example.germanclash.domain.usecase.SubmitAnswerUseCase
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -23,7 +23,9 @@ class GameViewModel(
     private val roomId: String,
     private val observeGameSession: ObserveGameSessionUseCase,
     private val submitAnswer: SubmitAnswerUseCase,
-    private val advanceToNextQuestion: AdvanceToNextQuestionUseCase
+    private val advanceToNextQuestion: AdvanceToNextQuestionUseCase,
+    private val recordAnswerStat: RecordAnswerStatUseCase,
+    private val recordSessionStats: RecordSessionStatsUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(GameUiState())
@@ -34,11 +36,11 @@ class GameViewModel(
 
     private var lastQuestionId: String? = null
     private var countdownJob: Job? = null
+    private var isNavigatingToResults = false
 
     // Session progress - questionsSeen counts questions actually shown so far
     // (including the one currently in progress); correctAnswers counts only
     // the ones scored wasCorrect = true. Both drive the Results screen.
-    private var questionsSeen = 0
     private var correctAnswers = 0
 
     // Consecutive correct answers, in a row, resetting to 0 on any wrong
@@ -46,6 +48,12 @@ class GameViewModel(
     // award a bonus, so the "Streak x5!" banner lines up with an actual
     // points bump rather than firing every single round after the first.
     private var currentStreak = 0
+
+    // The HIGHEST currentStreak reached anywhere in this session - not the
+    // same as currentStreak at session end, which could be 0 if the last
+    // answer happened to be wrong even after a big earlier run. This is
+    // what gets compared against the all-time best streak.
+    private var bestStreakThisSession = 0
 
     fun onIntent(intent: GameIntent) {
         when (intent) {
@@ -56,14 +64,21 @@ class GameViewModel(
             is GameIntent.FlipCard -> flipCard(intent.cardId)
             GameIntent.TimerExpired -> lockRoundAsIncorrect()
             GameIntent.NextQuestion -> advanceQuestion()
-            GameIntent.LeaveGame -> emitEffect(
-                GameEffect.NavigateToResults(
-                    roomId = roomId,
-                    finalScore = _state.value.localPlayerScore,
-                    correctCount = correctAnswers,
-                    totalCount = questionsSeen
-                )
-            )
+            GameIntent.LeaveGame -> {
+                if (!isNavigatingToResults) {
+                    isNavigatingToResults = true
+                    emitEffect(
+                        GameEffect.NavigateToResults(
+                            roomId = roomId,
+                            finalScore = _state.value.localPlayerScore,
+                            correctCount = correctAnswers,
+                            totalCount = _state.value.currentQuestionNumber,
+                            dailyBestScore = null, // Or fetch if relevant
+                            players = _state.value.players
+                        )
+                    )
+                }
+            }
             GameIntent.RetryAfterError -> loadGame()
         }
     }
@@ -72,30 +87,38 @@ class GameViewModel(
         _state.value = _state.value.copy(isLoading = true, error = null)
         observeGameSession(roomId)
             .onEach { session ->
+                if (session.isFinished) {
+                    onIntent(GameIntent.LeaveGame)
+                    return@onEach
+                }
+                
                 val questionChanged = session.currentQuestion?.id != lastQuestionId
                 lastQuestionId = session.currentQuestion?.id
-                if (questionChanged && session.currentQuestion != null) {
-                    questionsSeen++
-                }
+                
                 _state.value = _state.value.copy(
                     isLoading = false,
                     currentQuestion = session.currentQuestion,
                     gameType = session.currentQuestion?.type ?: _state.value.gameType,
                     players = session.players,
                     timeLimitMs = session.timeLimitMs,
+                    selectedAnswerId = if (questionChanged) null else _state.value.selectedAnswerId,
+                    isAnswerLocked = if (questionChanged) false else _state.value.isAnswerLocked,
+                    roundResult = if (questionChanged) null else _state.value.roundResult,
                     wordBank = if (questionChanged) session.currentQuestion?.scrambledWords.orEmpty() else _state.value.wordBank,
                     assembledWords = if (questionChanged) emptyList() else _state.value.assembledWords,
                     matchCards = if (questionChanged) buildMatchDeck(session.currentQuestion) else _state.value.matchCards,
                     flippedCardIds = if (questionChanged) emptyList() else _state.value.flippedCardIds,
                     isEvaluatingMismatch = if (questionChanged) false else _state.value.isEvaluatingMismatch,
-                    currentQuestionNumber = questionsSeen,
+                    currentQuestionNumber = session.currentQuestionNumber,
                     sessionLength = session.sessionLength,
-                    connectionStatus = session.connectionStatus
+                    connectionStatus = session.connectionStatus,
+                    format = session.format,
+                    isFinished = session.isFinished
                 )
                 // The ticker owns timeRemainingMs from here - restart it only
                 // when a genuinely new question arrives, never on every
                 // session tick (that would reset progress mid-question).
-                if (questionChanged) {
+                if (questionChanged && session.currentQuestion != null) {
                     startCountdown(session.timeLimitMs)
                 }
             }
@@ -122,7 +145,7 @@ class GameViewModel(
 
     private fun buildMatchDeck(question: Question?): List<MatchCard> {
         if (question == null || question.type != GameType.MATCH_PAIRS) return emptyList()
-        return question.cardPairs.flatMap { pair ->
+        return question.cardPairs.flatMap { pair: CardPair ->
             listOf(
                 MatchCard(id = "${pair.id}_front", pairId = pair.id, content = pair.front),
                 MatchCard(id = "${pair.id}_back", pairId = pair.id, content = pair.back)
@@ -197,19 +220,23 @@ class GameViewModel(
     }
 
     /**
-     * The shared end-of-round path: score it, show the result (now with a
-     * streak-aware bonus and a floating score popup), pause briefly so the
-     * player actually sees it, THEN either move to the next question or - if
-     * this was the last one in the session - go to Results instead.
+     * The shared end-of-round path: score it, record the category stat,
+     * show the result (with a streak-aware bonus and a floating score
+     * popup), pause briefly so the player actually sees it, THEN either
+     * move to the next question or - if this was the last one in the
+     * session - go to Results instead.
      */
     private fun submitAndReconcile(answerId: String) {
         countdownJob?.cancel()
+        val category = _state.value.currentQuestion?.category
         viewModelScope.launch {
             val result = submitAnswer(roomId, answerId)
+            if (category != null) recordAnswerStat(category, result.wasCorrect)
 
             if (result.wasCorrect) {
                 correctAnswers++
                 currentStreak++
+                if (currentStreak > bestStreakThisSession) bestStreakThisSession = currentStreak
                 val bonus = streakBonusFor(currentStreak)
                 val totalPoints = result.pointsAwarded + bonus
 
@@ -242,6 +269,7 @@ class GameViewModel(
         if (_state.value.isAnswerLocked) return
         currentStreak = 0
         val question = _state.value.currentQuestion
+        question?.category?.let { recordAnswerStat(it, false) }
         _state.value = _state.value.copy(
             isAnswerLocked = true,
             roundResult = RoundResult(
@@ -272,18 +300,32 @@ class GameViewModel(
     /**
      * sessionLength null (Firestore/Nearby today) means unbounded - always
      * advance, matching the old behavior. A real number means this is a
-     * fixed-length solo session, so once questionsSeen reaches it, the
-     * session is over instead of quietly fetching another question.
+     * fixed-length session, so once questionsSeen reaches it, the session is
+     * over instead of quietly fetching another question. Speed format adds
+     * a second way to end early: any wrong answer (or timeout) stops the
+     * run immediately, survival-style, regardless of sessionLength.
      */
     private fun finishOrAdvance() {
         val sessionLength = _state.value.sessionLength
-        if (sessionLength != null && questionsSeen >= sessionLength) {
+        val format = _state.value.format
+        val justAnsweredCorrectly = _state.value.roundResult?.wasCorrect == true
+        val survivalEnded = format == GameFormat.SPEED && !justAnsweredCorrectly
+        val reachedSessionLength = sessionLength != null && _state.value.currentQuestionNumber >= sessionLength
+
+        if (survivalEnded || reachedSessionLength) {
+            val statsResult = recordSessionStats(
+                isDailyChallenge = format == GameFormat.DAILY,
+                finalScore = _state.value.localPlayerScore,
+                bestStreakThisSession = bestStreakThisSession
+            )
             emitEffect(
                 GameEffect.NavigateToResults(
                     roomId = roomId,
                     finalScore = _state.value.localPlayerScore,
                     correctCount = correctAnswers,
-                    totalCount = questionsSeen
+                    totalCount = _state.value.currentQuestionNumber,
+                    dailyBestScore = statsResult.dailyBestScore,
+                    players = _state.value.players
                 )
             )
         } else {

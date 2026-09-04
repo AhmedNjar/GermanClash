@@ -31,4 +31,10 @@ interface MultiplayerDataSource {
      * starts itself in observeSession() and this is a no-op there.
      */
     suspend fun startMatch(roomId: String)
+
+    /**
+     * Toggles the ready state for a player. In multiplayer, the host will only
+     * start the match once all connected players are ready.
+     */
+    suspend fun toggleReady(roomId: String, playerId: String, isReady: Boolean)
 }

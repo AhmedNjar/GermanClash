@@ -12,7 +12,9 @@ val featureModule = module {
             roomId = roomId,
             observeGameSession = get(),
             submitAnswer = get(),
-            advanceToNextQuestion = get()
+            advanceToNextQuestion = get(),
+            recordAnswerStat = get(),
+            recordSessionStats = get()
         )
     }
     viewModel { (localPlayerId: String) ->
@@ -20,7 +22,7 @@ val featureModule = module {
             localPlayerId = localPlayerId,
             joinRoom = get(),
             observeGameSession = get(),
-            startMatch = get()
+            toggleReadyUseCase = get()
         )
     }
 }

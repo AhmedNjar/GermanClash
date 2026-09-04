@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.germanclash.core.result.Result
 import com.example.germanclash.domain.usecase.JoinRoomUseCase
 import com.example.germanclash.domain.usecase.ObserveGameSessionUseCase
-import com.example.germanclash.domain.usecase.StartMatchUseCase
+import com.example.germanclash.domain.usecase.ToggleReadyUseCase
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -19,7 +19,7 @@ class RoomViewModel(
     private val localPlayerId: String,
     private val joinRoom: JoinRoomUseCase,
     private val observeGameSession: ObserveGameSessionUseCase,
-    private val startMatch: StartMatchUseCase
+    private val toggleReadyUseCase: ToggleReadyUseCase
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(RoomUiState())
@@ -65,11 +65,9 @@ class RoomViewModel(
     private fun toggleReady() {
         val isNowReady = !_state.value.isLocalPlayerReady
         _state.value = _state.value.copy(isLocalPlayerReady = isNowReady)
-        // Real ready-state sync across multiple devices (so the match waits
-        // for everyone) is still open work - for now, marking yourself ready
-        // starts the match directly, matching what's actually reachable today.
-        if (isNowReady) {
-            viewModelScope.launch { startMatch(_state.value.roomId) }
+        
+        viewModelScope.launch {
+            toggleReadyUseCase(_state.value.roomId, localPlayerId, isNowReady)
         }
     }
 }

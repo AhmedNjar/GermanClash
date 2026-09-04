@@ -10,6 +10,8 @@ data class GameSession(
     val timeRemainingMs: Long,
     val timeLimitMs: Long,
     val isFinished: Boolean = false,
+    val currentQuestionNumber: Int = 0,
     val sessionLength: Int? = null, // null = unbounded; a number = finish after that many questions
-    val connectionStatus: ConnectionStatus = ConnectionStatus.CONNECTED
+    val connectionStatus: ConnectionStatus = ConnectionStatus.CONNECTED,
+    val format: GameFormat = GameFormat.CLASSIC
 )

@@ -30,32 +30,6 @@ private const val NEARBY_POINTS_CORRECT = 100
 private const val NEARBY_SESSION_LENGTH = 10
 private const val HOST_MARKER = "_HOST_"
 
-/**
- * Offline transport - now a real, if simple, two-role protocol instead of a
- * single-device stub:
- *
- * - HOST (roomId contains "_HOST_"): advertises, owns the QuestionBank,
- *   scores every answer (including its own), and broadcasts the full
- *   GameSession to every connected guest whenever anything changes. If a
- *   guest's connection drops, the host marks their Player isConnected = false
- *   but keeps their entry (and score) rather than removing them, so a
- *   reconnect picks up where they left off instead of starting over.
- * - GUEST (roomId contains "_JOIN_"): discovers a host, requests a
- *   connection, sends a Hello so the host knows its real playerId, then
- *   treats every SessionUpdate from the host as authoritative. Submitting
- *   an answer sends it to the host and suspends until that exact answer's
- *   RoundResultMessage comes back - the same "wait for the real result"
- *   shape FirestoreDataSource uses. If the connection to the host drops,
- *   the guest flags connectionStatus = RECONNECTING and restarts discovery
- *   automatically; the same stable localPlayerId in its next Hello is what
- *   lets the host recognize it as a returning player, not a stranger.
- *
- * Known gaps, deliberately left for later: no host migration if the HOST
- * itself disconnects (there's no election/mesh topology for guests to fall
- * back on - this only covers a guest losing its link to a still-alive host),
- * and a guest always connects to the FIRST endpoint it discovers (no picker
- * for multiple nearby hosts).
- */
 class NearbyP2PDataSource(
     private val connectionClient: P2PConnectionClient,
     private val codec: P2PMessageCodec,
@@ -77,10 +51,10 @@ class NearbyP2PDataSource(
     private var isHost = false
     private val connectedEndpoints = mutableSetOf<String>()
     private val endpointToPlayerId = mutableMapOf<String, String>()
+    
+    // Tracks who has answered the CURRENT question - reset on every advanceToNextQuestion
+    private val answeredPlayerIds = mutableSetOf<String>()
 
-    // replay > 0 so a RoundResultMessage that arrives just before submitAnswer's
-    // .first() subscribes isn't lost - the filter below still guarantees we only
-    // ever act on the one that actually matches this exact answer.
     private val incomingRoundResults =
         MutableSharedFlow<P2PMessage.RoundResultMessage>(replay = 4, extraBufferCapacity = 8)
 
@@ -99,35 +73,69 @@ class NearbyP2PDataSource(
     override suspend fun joinRoom(roomId: String, playerId: String): Boolean {
         localPlayerId = playerId
         isHost = roomId.contains(HOST_MARKER)
-        connectedEndpoints.clear()
-        endpointToPlayerId.clear()
-
-        session.value = GameSession(
+        
+        session.value = session.value.copy(
             roomId = roomId,
-            players = listOf(Player(id = playerId, displayName = if (isHost) "You (host)" else "You")),
+            players = session.value.players.ifEmpty {
+                listOf(Player(id = playerId, displayName = if (isHost) "You (host)" else "You"))
+            },
             currentQuestion = null,
             timeRemainingMs = NEARBY_TIME_LIMIT_MS,
-            timeLimitMs = NEARBY_TIME_LIMIT_MS
+            timeLimitMs = NEARBY_TIME_LIMIT_MS,
+            isFinished = false,
+            currentQuestionNumber = 0
         )
 
         if (isHost) {
             connectionClient.startAdvertising(roomName = roomId)
         } else {
-            connectionClient.startDiscovery { endpointId ->
-                scope.launch { connectionClient.requestConnection(endpointId, localDisplayName = playerId) }
+            if (connectedEndpoints.isEmpty()) {
+                connectionClient.startDiscovery { endpointId ->
+                    scope.launch { connectionClient.requestConnection(endpointId, localDisplayName = playerId) }
+                }
             }
         }
         return true
     }
 
     override suspend fun startMatch(roomId: String) {
-        if (!isHost || session.value.currentQuestion != null) return
+        if (!isHost) return
+        answeredPlayerIds.clear()
         session.value = session.value.copy(
             currentQuestion = questionBank.nextQuestion(previousId = null, filter = PracticeFilter()),
             sessionLength = NEARBY_SESSION_LENGTH,
-            timeRemainingMs = NEARBY_TIME_LIMIT_MS
+            currentQuestionNumber = 1,
+            timeRemainingMs = NEARBY_TIME_LIMIT_MS,
+            isFinished = false
         )
         broadcastSessionUpdate()
+    }
+
+    override suspend fun toggleReady(roomId: String, playerId: String, isReady: Boolean) {
+        if (isHost) {
+            updatePlayerReadyStatus(playerId, isReady)
+            checkAllPlayersReadyAndStart()
+        } else {
+            val hostEndpointId = connectedEndpoints.firstOrNull() ?: return
+            connectionClient.sendPayload(hostEndpointId, codec.encode(P2PMessage.ReadyStatusChanged(playerId, isReady)))
+        }
+    }
+
+    private fun updatePlayerReadyStatus(playerId: String, isReady: Boolean) {
+        session.value = session.value.copy(
+            players = session.value.players.map { player ->
+                if (player.id == playerId) player.copy(isReady = isReady) else player
+            }
+        )
+        broadcastSessionUpdate()
+    }
+
+    private fun checkAllPlayersReadyAndStart() {
+        val players = session.value.players
+        // Only auto-start if there's at least one guest (or if it's solo-ish but in P2P mode)
+        if (players.size > 1 && players.all { it.isReady }) {
+            scope.launch { startMatch(session.value.roomId) }
+        }
     }
 
     override suspend fun submitAnswer(roomId: String, answerId: String): RoundResult {
@@ -136,7 +144,8 @@ class NearbyP2PDataSource(
 
         if (isHost) {
             val result = scoreLocally(playerId, answerId, question)
-            broadcastSessionUpdate()
+            answeredPlayerIds.add(playerId)
+            checkAllAnsweredAndAdvance()
             return result
         }
 
@@ -151,15 +160,34 @@ class NearbyP2PDataSource(
             .first()
     }
 
+    private fun checkAllAnsweredAndAdvance() {
+        if (!isHost) return
+        val connectedPlayerIds = session.value.players.filter { it.isConnected }.map { it.id }.toSet()
+        if (answeredPlayerIds.containsAll(connectedPlayerIds)) {
+            // Everyone answered! Advance.
+            scope.launch { advanceToNextQuestion(session.value.roomId) }
+        }
+    }
+
     override suspend fun advanceToNextQuestion(roomId: String) {
-        if (!isHost) return // the guest just waits for the host's next SessionUpdate
-        session.value = session.value.copy(
-            currentQuestion = questionBank.nextQuestion(
-                previousId = session.value.currentQuestion?.id,
-                filter = PracticeFilter()
-            ),
-            timeRemainingMs = NEARBY_TIME_LIMIT_MS
-        )
+        if (!isHost) return
+        
+        answeredPlayerIds.clear()
+        val nextNumber = session.value.currentQuestionNumber + 1
+        val length = session.value.sessionLength ?: NEARBY_SESSION_LENGTH
+        
+        if (nextNumber > length) {
+            session.value = session.value.copy(isFinished = true)
+        } else {
+            session.value = session.value.copy(
+                currentQuestion = questionBank.nextQuestion(
+                    previousId = session.value.currentQuestion?.id,
+                    filter = PracticeFilter()
+                ),
+                currentQuestionNumber = nextNumber,
+                timeRemainingMs = NEARBY_TIME_LIMIT_MS
+            )
+        }
         broadcastSessionUpdate()
     }
 
@@ -205,7 +233,10 @@ class NearbyP2PDataSource(
                 if (isHost) {
                     val question = session.value.currentQuestion
                     val result = scoreLocally(message.playerId, message.answerId, question)
-                    broadcastSessionUpdate()
+                    
+                    answeredPlayerIds.add(message.playerId)
+                    checkAllAnsweredAndAdvance()
+
                     scope.launch {
                         connectionClient.sendPayload(
                             incoming.endpointId,
@@ -217,6 +248,12 @@ class NearbyP2PDataSource(
             is P2PMessage.RoundResultMessage -> {
                 incomingRoundResults.tryEmit(message)
             }
+            is P2PMessage.ReadyStatusChanged -> {
+                if (isHost) {
+                    updatePlayerReadyStatus(message.playerId, message.isReady)
+                    checkAllPlayersReadyAndStart()
+                }
+            }
         }
     }
 
@@ -225,8 +262,6 @@ class NearbyP2PDataSource(
             is P2PConnectionEvent.Connected -> {
                 connectedEndpoints += event.endpointId
                 if (!isHost) {
-                    // Tell the host who we really are - endpointId isn't a
-                    // shared identifier between the two sides of a connection.
                     val myId = localPlayerId.orEmpty()
                     scope.launch {
                         connectionClient.sendPayload(event.endpointId, codec.encode(P2PMessage.Hello(myId, "Player")))
@@ -239,14 +274,16 @@ class NearbyP2PDataSource(
                 if (isHost) {
                     val leftPlayerId = endpointToPlayerId.remove(event.endpointId)
                     if (leftPlayerId != null) {
-                        // Keep the player (and their score) rather than removing them -
-                        // Hello on a reconnect flips isConnected back to true in place.
                         session.value = session.value.copy(
                             players = session.value.players.map { player ->
                                 if (player.id == leftPlayerId) player.copy(isConnected = false) else player
                             }
                         )
                         broadcastSessionUpdate()
+                        // If someone leaves, maybe re-check if everyone remaining is ready
+                        checkAllPlayersReadyAndStart()
+                        // Or check if everyone remaining has answered
+                        checkAllAnsweredAndAdvance()
                     }
                 } else {
                     session.value = session.value.copy(connectionStatus = ConnectionStatus.RECONNECTING)

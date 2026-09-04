@@ -82,4 +82,8 @@ class SoloDataSource(
         // No-op: Solo has no lobby to wait for a "ready" tap in - it starts
         // itself the moment observeSession() is first called.
     }
+
+    override suspend fun toggleReady(roomId: String, playerId: String, isReady: Boolean) {
+        // No-op for solo
+    }
 }

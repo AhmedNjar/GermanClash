@@ -30,9 +30,13 @@ private val ConfettiColors = listOf(
  * counter bumped on every correct answer) to replay it.
  */
 @Composable
-fun ConfettiOverlay(triggerKey: Int, modifier: Modifier = Modifier) {
-    val particles = remember {
-        List(24) {
+fun ConfettiOverlay(
+    triggerKey: Int,
+    modifier: Modifier = Modifier,
+    particleCount: Int = 24
+) {
+    val particles = remember(triggerKey) {
+        List(particleCount) {
             ConfettiParticle(
                 angleDegrees = Random.nextFloat() * 360f,
                 distance = 120f + (Random.nextFloat() * 80f),
@@ -41,7 +45,7 @@ fun ConfettiOverlay(triggerKey: Int, modifier: Modifier = Modifier) {
             )
         }
     }
-    val progress = remember { Animatable(0f) }
+    val progress = remember(triggerKey) { Animatable(0f) }
 
     LaunchedEffect(triggerKey) {
         if (triggerKey == 0) return@LaunchedEffect

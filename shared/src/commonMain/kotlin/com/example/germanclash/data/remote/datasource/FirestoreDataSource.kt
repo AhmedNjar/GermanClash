@@ -71,4 +71,11 @@ class FirestoreDataSource(
         // Firestore - that doesn't exist yet, and this transport isn't
         // currently reachable from the app's UI regardless.
     }
+
+    override suspend fun toggleReady(roomId: String, playerId: String, isReady: Boolean) {
+        // In a real Firestore implementation, this would update the player's 
+        // ready status in the "players" subcollection.
+        sessions.document(roomId).collection("players").document(playerId)
+            .update("isReady" to isReady)
+    }
 }

@@ -1,5 +1,7 @@
 package com.example.germanclash.data.local.questionbank
 
+import com.example.germanclash.domain.model.GameFormat
+
 /**
  * level/category null means "no restriction" - the practice pool includes
  * everything on that axis. sessionLength always has a value - it's how many
@@ -8,7 +10,8 @@ package com.example.germanclash.data.local.questionbank
 data class PracticeFilter(
     val level: String? = null,
     val category: String? = null,
-    val sessionLength: Int = 10
+    val sessionLength: Int = 10,
+    val format: GameFormat = GameFormat.CLASSIC
 )
 
 /**

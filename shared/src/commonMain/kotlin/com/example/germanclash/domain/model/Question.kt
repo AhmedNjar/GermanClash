@@ -11,6 +11,7 @@ import kotlinx.serialization.Serializable
 data class Question(
     val id: String,
     val type: GameType,
+    val category: String? = null,                    // used for stats and filtering
     val prompt: String,                              // e.g. "___ Hund", "Select the odd one out"
     val imageUrl: String? = null,
     val options: List<AnswerOption> = emptyList(),    // DER_DIE_DAS, IMAGE_GUESS, ODD_ONE_OUT, WORD_COMPLETION

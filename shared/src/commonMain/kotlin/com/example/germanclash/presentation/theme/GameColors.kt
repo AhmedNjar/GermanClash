@@ -3,19 +3,24 @@ package com.example.germanclash.presentation.theme
 import androidx.compose.ui.graphics.Color
 
 object GameColors {
-    val TimerGreen = Color(0xFF4CAF50)
-    val TimerYellow = Color(0xFFFFC107)
-    val TimerRed = Color(0xFFF44336)
+    val Primary = Color(0xFF6366F1)
+    val Background = Color(0xFF0F111A)
+    val Surface = Color(0xFF1D202F)
+    
+    val CorrectGreen = Color(0xFF22C55E)
+    val WrongRed = Color(0xFFEF4444)
 
-    val CorrectGreen = Color(0xFF2ECC71)
-    val WrongRed = Color(0xFFE74C3C)
+    val TimerGreen = Color(0xFF22C55E)
+    val TimerYellow = Color(0xFFFACC15)
+    val TimerRed = Color(0xFFEF4444)
 
-    val OptionDefault = Color(0xFF3D4066)
-    val OptionSelected = Color(0xFF5B6EF5)
+    val OptionDefault = Color(0xFF2D2F45)
+    val OptionSelected = Color(0xFF6366F1)
 
-    val BackgroundTop = Color(0xFF1B1D2E)
-    val BackgroundBottom = Color(0xFF2D2F45)
-
-    val CardBackground = Color(0xFF242840)
     val TitleAccent = Color(0xFFB794F6)
+    
+    // Legacy mapping support or cleanup needed later
+    val CardBackground = Surface
+    val BackgroundTop = Background
+    val BackgroundBottom = Background
 }

@@ -3,6 +3,7 @@ package com.example.germanclash.presentation.feature.results
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -17,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.germanclash.presentation.common.AnswerState
 import com.example.germanclash.presentation.common.ConfettiOverlay
 import com.example.germanclash.presentation.common.JuicyButton
@@ -29,6 +31,9 @@ fun ResultsScreen(
     score: Int,
     correctCount: Int,
     totalCount: Int,
+    dailyBestScore: Int? = null,
+    isMultiplayer: Boolean = false,
+    matchPlayers: List<Pair<String, Int>> = emptyList(),
     onPlayAgain: () -> Unit,
     onChangeCategory: () -> Unit
 ) {
@@ -64,12 +69,36 @@ fun ResultsScreen(
                 Text(text = "$score points", fontWeight = FontWeight.Bold)
             }
 
-            SectionCard(title = "Accuracy", modifier = Modifier.fillMaxWidth().padding(bottom = 32.dp)) {
+            SectionCard(title = "Accuracy", modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)) {
                 Text(text = "$correctCount / $totalCount correct ($accuracyPercent%)")
             }
 
+            if (dailyBestScore != null) {
+                SectionCard(title = "Daily Challenge", modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp)) {
+                    Text(
+                        text = if (score >= dailyBestScore) {
+                            "New best today: $dailyBestScore points! \uD83C\uDFC6"
+                        } else {
+                            "Your best today: $dailyBestScore points"
+                        }
+                    )
+                }
+            }
+
+            // Only meaningful with more than one real player - a "leaderboard"
+            // of just yourself is clutter, not a feature.
+            if (matchPlayers.size > 1) {
+                SectionCard(title = "Match Results", modifier = Modifier.fillMaxWidth().padding(bottom = 32.dp)) {
+                    matchPlayers.sortedByDescending { it.second }.forEachIndexed { index, (name, playerScore) ->
+                        Text(text = "${index + 1}. $name - $playerScore")
+                    }
+                }
+            } else {
+                Spacer(modifier = Modifier.padding(bottom = 16.dp))
+            }
+
             JuicyButton(
-                text = "Play again",
+                text = if (isMultiplayer) "Rematch" else "Play again",
                 state = AnswerState.IDLE,
                 onClick = onPlayAgain,
                 modifier = Modifier
@@ -86,4 +115,18 @@ fun ResultsScreen(
 
         ConfettiOverlay(triggerKey = confettiTrigger, modifier = Modifier.fillMaxSize())
     }
+}
+
+@Composable
+@Preview
+fun ResultsScreenPreview() {
+    ResultsScreen(
+        score = 850,
+        correctCount = 8,
+        totalCount = 10,
+        dailyBestScore = 1200,
+        isMultiplayer = false,
+        onPlayAgain = {},
+        onChangeCategory = {}
+    )
 }

@@ -1,10 +1,6 @@
 package com.example.germanclash.di
 
-import com.example.germanclash.domain.usecase.AdvanceToNextQuestionUseCase
-import com.example.germanclash.domain.usecase.JoinRoomUseCase
-import com.example.germanclash.domain.usecase.ObserveGameSessionUseCase
-import com.example.germanclash.domain.usecase.StartMatchUseCase
-import com.example.germanclash.domain.usecase.SubmitAnswerUseCase
+import com.example.germanclash.domain.usecase.*
 import org.koin.dsl.module
 
 val domainModule = module {
@@ -13,4 +9,8 @@ val domainModule = module {
     factory { JoinRoomUseCase(get()) }
     factory { AdvanceToNextQuestionUseCase(get()) }
     factory { StartMatchUseCase(get()) }
+    factory { ToggleReadyUseCase(get()) }
+    factory { RecordSessionStatsUseCase(get(), get()) }
+    factory { RecordAnswerStatUseCase(get()) }
+    factory { GetStatsSummaryUseCase(get()) }
 }

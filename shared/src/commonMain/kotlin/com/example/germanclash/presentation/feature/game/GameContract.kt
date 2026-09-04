@@ -1,6 +1,7 @@
 package com.example.germanclash.presentation.feature.game
 
 import com.example.germanclash.domain.model.ConnectionStatus
+import com.example.germanclash.domain.model.GameFormat
 import com.example.germanclash.domain.model.GameType
 import com.example.germanclash.domain.model.Player
 import com.example.germanclash.domain.model.Question
@@ -28,7 +29,9 @@ data class GameUiState(
     val isEvaluatingMismatch: Boolean = false,      // MATCH_PAIRS: brief lock while a wrong pair is shown
     val currentQuestionNumber: Int = 0,   // 1-indexed - for "Question X of Y"
     val sessionLength: Int? = null,       // null = unbounded (Firestore/Nearby today); a number ends on Results
+    val isFinished: Boolean = false,
     val connectionStatus: ConnectionStatus = ConnectionStatus.CONNECTED,
+    val format: GameFormat = GameFormat.CLASSIC,
     val error: String? = null
 ) {
     val timerProgress: Float
@@ -78,7 +81,9 @@ sealed interface GameEffect {
         val roomId: String,
         val finalScore: Int,
         val correctCount: Int,
-        val totalCount: Int
+        val totalCount: Int,
+        val dailyBestScore: Int?,
+        val players: List<Player>
     ) : GameEffect
     data class ShowToast(val message: String) : GameEffect
 }

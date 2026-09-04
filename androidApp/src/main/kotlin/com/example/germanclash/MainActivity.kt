@@ -2,6 +2,7 @@ package com.example.germanclash
 
 import android.Manifest
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
@@ -22,20 +23,32 @@ class MainActivity : ComponentActivity() {
     // manifest - without this, startAdvertising/startDiscovery fail silently or throw.
     private val requestNearbyPermissions = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
-    ) { /* no rationale UI yet - if denied, hosting/joining will just silently fail to connect */ }
+    ) { results ->
+        val denied = results.entries.filter { !it.value }
+        if (denied.isNotEmpty()) {
+            Toast.makeText(this, "Permissions needed for multiplayer: ${denied.map { it.key.split('.').last() }}", Toast.LENGTH_LONG).show()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        requestNearbyPermissions.launch(
-            arrayOf(
-                Manifest.permission.BLUETOOTH_ADVERTISE,
-                Manifest.permission.BLUETOOTH_CONNECT,
-                Manifest.permission.BLUETOOTH_SCAN,
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.NEARBY_WIFI_DEVICES
-            )
+        val permissions = mutableListOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION
         )
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+            permissions.add(Manifest.permission.BLUETOOTH_ADVERTISE)
+            permissions.add(Manifest.permission.BLUETOOTH_CONNECT)
+            permissions.add(Manifest.permission.BLUETOOTH_SCAN)
+        }
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            permissions.add(Manifest.permission.NEARBY_WIFI_DEVICES)
+        }
+
+        requestNearbyPermissions.launch(permissions.toTypedArray())
 
         setContent {
             val soundPlayer = remember { AndroidSoundEffectPlayer(applicationContext) }

@@ -25,6 +25,9 @@ fun colorForCategory(category: String?): Color {
     return CategoryPalette[index]
 }
 
+fun colorForLockedChip(): Color = NeutralAccent.copy(alpha = 0.5f)
+
+
 private val CategoryEmoji = mapOf(
     "Animals" to "\uD83D\uDC3E",
     "Food" to "\uD83C\uDF4E",

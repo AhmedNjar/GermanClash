@@ -16,4 +16,5 @@ interface GameRepository {
     suspend fun joinRoom(roomId: String, playerId: String): Result<Unit>
     suspend fun advanceToNextQuestion(roomId: String)
     suspend fun startMatch(roomId: String)
+    suspend fun toggleReady(roomId: String, playerId: String, isReady: Boolean)
 }

@@ -26,4 +26,7 @@ sealed interface P2PMessage {
         val questionId: String,
         val result: RoundResult
     ) : P2PMessage
+
+    @Serializable
+    data class ReadyStatusChanged(val playerId: String, val isReady: Boolean) : P2PMessage
 }

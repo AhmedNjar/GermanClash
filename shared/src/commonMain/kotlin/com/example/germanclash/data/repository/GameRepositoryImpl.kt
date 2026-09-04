@@ -43,6 +43,9 @@ class GameRepositoryImpl(
     override suspend fun startMatch(roomId: String) =
         sourceFor(roomId).startMatch(roomId)
 
+    override suspend fun toggleReady(roomId: String, playerId: String, isReady: Boolean) =
+        sourceFor(roomId).toggleReady(roomId, playerId, isReady)
+
     companion object {
         private const val LOCAL_ROOM_PREFIX = "LOCAL_"
         private const val SOLO_ROOM_PREFIX = "SOLO_"

@@ -18,39 +18,80 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.germanclash.data.local.questionbank.PracticeFilter
 import com.example.germanclash.data.local.questionbank.PracticeFilterState
 import com.example.germanclash.data.local.questionbank.QuestionBank
+import com.example.germanclash.domain.model.GameFormat
+import com.example.germanclash.domain.policy.UnlockPolicy
+import com.example.germanclash.domain.usecase.GetStatsSummaryUseCase
+import com.example.germanclash.domain.usecase.StatsSummary
 import com.example.germanclash.presentation.common.AnswerState
 import com.example.germanclash.presentation.common.CategoryChip
 import com.example.germanclash.presentation.common.FilterChip
 import com.example.germanclash.presentation.common.JuicyButton
 import com.example.germanclash.presentation.common.SectionCard
 import com.example.germanclash.presentation.common.colorForCategory
+import com.example.germanclash.presentation.common.colorForLockedChip
 import com.example.germanclash.presentation.common.emojiForCategory
+import com.example.germanclash.presentation.theme.GameColors
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ModeSelectScreen(
     practiceFilterState: PracticeFilterState,
     questionBank: QuestionBank,
+    getStatsSummary: GetStatsSummaryUseCase,
     onPlaySolo: () -> Unit,
     onHostGame: () -> Unit,
-    onJoinGame: () -> Unit
+    onJoinGame: () -> Unit,
+    onViewStats: () -> Unit
+) {
+    // Fetched once per visit - stats only change during gameplay, not while
+    // sitting on this screen, so a live-updating read isn't needed here.
+    val statsSummary = remember { getStatsSummary() }
+
+    ModeSelectContent(
+        statsSummary = statsSummary,
+        availableLevels = questionBank.availableLevels(),
+        availableCategories = questionBank.availableCategories(),
+        onStartSolo = { filter ->
+            practiceFilterState.current = filter
+            onPlaySolo()
+        },
+        onHostGame = onHostGame,
+        onJoinGame = onJoinGame,
+        onViewStats = onViewStats
+    )
+}
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+fun ModeSelectContent(
+    statsSummary: StatsSummary,
+    availableLevels: List<String>,
+    availableCategories: List<String>,
+    onStartSolo: (PracticeFilter) -> Unit,
+    onHostGame: () -> Unit,
+    onJoinGame: () -> Unit,
+    onViewStats: () -> Unit
 ) {
     var selectedLevel by remember { mutableStateOf<String?>(null) }
     var selectedCategory by remember { mutableStateOf<String?>(null) }
     var selectedSessionLength by remember { mutableStateOf(10) }
+    var selectedFormat by remember { mutableStateOf(GameFormat.CLASSIC) }
 
-    // Pulled straight from the loaded content, not hardcoded - add a new
-    // category to the JSON and it shows up here automatically.
-    val levels = remember(questionBank) { listOf(null) + questionBank.availableLevels() }
-    val categories = remember(questionBank) { listOf(null) + questionBank.availableCategories() }
+    val levels = remember(availableLevels) { listOf(null) + availableLevels }
+    val categories = remember(availableCategories) { listOf(null) + availableCategories }
+    
     val sessionLengths = listOf(5 to "Quick (5)", 10 to "Standard (10)", 20 to "Marathon (20)")
+    val formats = listOf(
+        GameFormat.CLASSIC to "Classic",
+        GameFormat.MIXED to "Mixed",
+        GameFormat.SPEED to "Speed",
+        GameFormat.DAILY to "Daily"
+    )
 
-    // No background modifier here - GermanClashBackground paints it once at
-    // the root, and Surface there already gives Text below the right default color.
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -61,16 +102,59 @@ fun ModeSelectScreen(
         Text(
             text = "GermanClash",
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(top = 32.dp, bottom = 32.dp)
+            modifier = Modifier.padding(top = 32.dp, bottom = 8.dp)
         )
+
+        if (statsSummary.dailyPlayStreak > 0) {
+            Text(
+                text = "\uD83D\uDD25 ${statsSummary.dailyPlayStreak} day streak",
+                color = GameColors.TitleAccent,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+        }
+
+        JuicyButton(
+            text = "View stats",
+            state = AnswerState.IDLE,
+            onClick = onViewStats,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 24.dp)
+        )
+
+        SectionCard(title = "Format", modifier = Modifier.padding(bottom = 20.dp)) {
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                formats.forEach { (value, label) ->
+                    FilterChip(
+                        text = label,
+                        isSelected = selectedFormat == value,
+                        onClick = { selectedFormat = value }
+                    )
+                }
+            }
+            if (selectedFormat == GameFormat.DAILY) {
+                Text(
+                    text = "Same 10 questions for everyone today - level, category, and session length below are ignored.",
+                    modifier = Modifier.padding(top = 12.dp)
+                )
+            }
+        }
 
         SectionCard(title = "Level", modifier = Modifier.padding(bottom = 20.dp)) {
             FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 levels.forEach { value ->
+                    val isUnlocked = value == null ||
+                        UnlockPolicy.isLevelUnlocked(value, statsSummary.totalCorrectAnswers)
+                    val requirement = value?.let { UnlockPolicy.correctAnswersNeededForLevel(it) }
                     FilterChip(
-                        text = value ?: "All levels",
+                        text = when {
+                            value == null -> "All levels"
+                            isUnlocked -> value
+                            else -> "\uD83D\uDD12 $value ($requirement)"
+                        },
                         isSelected = selectedLevel == value,
-                        onClick = { selectedLevel = value }
+                        onClick = { if (isUnlocked) selectedLevel = value }
                     )
                 }
             }
@@ -82,12 +166,21 @@ fun ModeSelectScreen(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 categories.forEach { value ->
+                    val isUnlocked = value == null ||
+                        UnlockPolicy.isCategoryUnlocked(value, availableCategories, statsSummary.totalCorrectAnswers)
+                    val requirement = value?.let {
+                        UnlockPolicy.correctAnswersNeededForCategory(it, availableCategories)
+                    }
                     CategoryChip(
-                        emoji = emojiForCategory(value),
-                        label = value ?: "All categories",
-                        accentColor = colorForCategory(value),
+                        emoji = if (isUnlocked) emojiForCategory(value) else "\uD83D\uDD12",
+                        label = when {
+                            value == null -> "All categories"
+                            isUnlocked -> value
+                            else -> "$value ($requirement)"
+                        },
+                        accentColor = if (isUnlocked) colorForCategory(value) else colorForLockedChip(),
                         isSelected = selectedCategory == value,
-                        onClick = { selectedCategory = value }
+                        onClick = { if (isUnlocked) selectedCategory = value }
                     )
                 }
             }
@@ -109,12 +202,14 @@ fun ModeSelectScreen(
             text = "Play solo",
             state = AnswerState.IDLE,
             onClick = {
-                practiceFilterState.current = PracticeFilter(
-                    level = selectedLevel,
-                    category = selectedCategory,
-                    sessionLength = selectedSessionLength
+                onStartSolo(
+                    PracticeFilter(
+                        level = selectedLevel,
+                        category = selectedCategory,
+                        sessionLength = if (selectedFormat == GameFormat.DAILY) 10 else selectedSessionLength,
+                        format = selectedFormat
+                    )
                 )
-                onPlaySolo()
             },
             modifier = Modifier
                 .fillMaxWidth()
@@ -135,4 +230,23 @@ fun ModeSelectScreen(
             modifier = Modifier.fillMaxWidth()
         )
     }
+}
+
+@Composable
+@Preview
+fun ModeSelectScreenPreview() {
+    ModeSelectContent(
+        statsSummary = StatsSummary(
+            bestStreak = 5,
+            dailyPlayStreak = 2,
+            totalCorrectAnswers = 30,
+            categoryStats = emptyMap()
+        ),
+        availableLevels = listOf("A1", "A2"),
+        availableCategories = listOf("Food", "Animals", "City", "Nature"),
+        onStartSolo = {},
+        onHostGame = {},
+        onJoinGame = {},
+        onViewStats = {}
+    )
 }

@@ -1,0 +1,7 @@
+- [x] Multiplayer Ready-up & Turn Sync Fixes
+    - [x] Update `P2PMessage.kt` with `ReadyStatusChanged`
+    - [x] Update `MultiplayerDataSource.kt` and implementations with `toggleReady`
+    - [x] Refactor `NearbyP2PDataSource.kt` for true ready-up and turn sync
+    - [x] Update `RoomViewModel.kt` to use `toggleReady`
+    - [x] Update `GameViewModel.kt` for clean question transitions
+- [x] Final Verification
