@@ -78,4 +78,17 @@ class FirestoreDataSource(
         sessions.document(roomId).collection("players").document(playerId)
             .update("isReady" to isReady)
     }
+
+    override suspend fun updateSettings(
+        roomId: String,
+        format: com.example.germanclash.domain.model.GameFormat,
+        timeLimitMs: Long,
+        category: String?
+    ) {
+        sessions.document(roomId).update(
+            "format" to format.name,
+            "timeLimitMs" to timeLimitMs,
+            "category" to category
+        )
+    }
 }

@@ -115,11 +115,23 @@ class GameViewModel(
                     format = session.format,
                     isFinished = session.isFinished
                 )
-                // The ticker owns timeRemainingMs from here - restart it only
-                // when a genuinely new question arrives, never on every
-                // session tick (that would reset progress mid-question).
                 if (questionChanged && session.currentQuestion != null) {
-                    startCountdown(session.timeLimitMs)
+                    // Reset selection state immediately on new question
+                    _state.value = _state.value.copy(
+                        selectedAnswerId = null,
+                        isAnswerLocked = false,
+                        roundResult = null
+                    )
+                    
+                    if (session.format != com.example.germanclash.domain.model.GameFormat.TIME_ATTACK) {
+                        startCountdown(session.timeLimitMs)
+                    }
+                }
+                
+                // If it IS Time Attack, we update timeRemainingMs directly from the session
+                if (session.format == com.example.germanclash.domain.model.GameFormat.TIME_ATTACK) {
+                    countdownJob?.cancel()
+                    _state.value = _state.value.copy(timeRemainingMs = session.timeRemainingMs)
                 }
             }
             .launchIn(viewModelScope)

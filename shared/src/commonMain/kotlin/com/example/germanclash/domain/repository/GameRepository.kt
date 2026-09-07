@@ -17,4 +17,5 @@ interface GameRepository {
     suspend fun advanceToNextQuestion(roomId: String)
     suspend fun startMatch(roomId: String)
     suspend fun toggleReady(roomId: String, playerId: String, isReady: Boolean)
+    suspend fun updateSettings(roomId: String, format: com.example.germanclash.domain.model.GameFormat, timeLimitMs: Long, category: String?)
 }

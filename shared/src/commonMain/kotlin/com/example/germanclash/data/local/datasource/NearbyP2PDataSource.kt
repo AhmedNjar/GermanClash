@@ -28,6 +28,7 @@ import kotlinx.coroutines.launch
 private const val NEARBY_TIME_LIMIT_MS = 10_000L
 private const val NEARBY_POINTS_CORRECT = 100
 private const val NEARBY_SESSION_LENGTH = 10
+private const val TIME_ATTACK_DURATION_MS = 60_000L
 private const val HOST_MARKER = "_HOST_"
 
 class NearbyP2PDataSource(
@@ -52,6 +53,8 @@ class NearbyP2PDataSource(
     private val connectedEndpoints = mutableSetOf<String>()
     private val endpointToPlayerId = mutableMapOf<String, String>()
     
+    private var timeAttackJob: kotlinx.coroutines.Job? = null
+
     // Tracks who has answered the CURRENT question - reset on every advanceToNextQuestion
     private val answeredPlayerIds = mutableSetOf<String>()
 
@@ -101,14 +104,43 @@ class NearbyP2PDataSource(
     override suspend fun startMatch(roomId: String) {
         if (!isHost) return
         answeredPlayerIds.clear()
+        timeAttackJob?.cancel()
+
+        val settings = session.value
+        val format = settings.format
+        val timeLimit = settings.timeLimitMs
+        val category = settings.category
+
         session.value = session.value.copy(
-            currentQuestion = questionBank.nextQuestion(previousId = null, filter = PracticeFilter()),
-            sessionLength = NEARBY_SESSION_LENGTH,
+            currentQuestion = questionBank.nextQuestion(
+                previousId = null,
+                filter = PracticeFilter(category = category)
+            ),
+            sessionLength = if (format == com.example.germanclash.domain.model.GameFormat.TIME_ATTACK) null else NEARBY_SESSION_LENGTH,
             currentQuestionNumber = 1,
-            timeRemainingMs = NEARBY_TIME_LIMIT_MS,
+            timeRemainingMs = timeLimit,
             isFinished = false
         )
         broadcastSessionUpdate()
+
+        if (format == com.example.germanclash.domain.model.GameFormat.TIME_ATTACK) {
+            startTimeAttackTimer()
+        }
+    }
+
+    private fun startTimeAttackTimer() {
+        timeAttackJob = scope.launch {
+            var remaining = TIME_ATTACK_DURATION_MS
+            while (remaining > 0) {
+                // We reuse timeRemainingMs in the session to broadcast the global 60s timer
+                session.value = session.value.copy(timeRemainingMs = remaining)
+                broadcastSessionUpdate()
+                kotlinx.coroutines.delay(1000)
+                remaining -= 1000
+            }
+            session.value = session.value.copy(isFinished = true, timeRemainingMs = 0)
+            broadcastSessionUpdate()
+        }
     }
 
     override suspend fun toggleReady(roomId: String, playerId: String, isReady: Boolean) {
@@ -118,6 +150,28 @@ class NearbyP2PDataSource(
         } else {
             val hostEndpointId = connectedEndpoints.firstOrNull() ?: return
             connectionClient.sendPayload(hostEndpointId, codec.encode(P2PMessage.ReadyStatusChanged(playerId, isReady)))
+        }
+    }
+
+    override suspend fun updateSettings(
+        roomId: String,
+        format: com.example.germanclash.domain.model.GameFormat,
+        timeLimitMs: Long,
+        category: String?
+    ) {
+        if (!isHost) return
+        session.value = session.value.copy(
+            format = format,
+            timeLimitMs = timeLimitMs,
+            category = category
+        )
+        broadcastSessionUpdate()
+        
+        // Also tell everyone specifically about the settings change (optional if broadcastSessionUpdate is enough, 
+        // but explicit messages are safer for UI triggers)
+        val bytes = codec.encode(P2PMessage.GameSettingsChanged(format, timeLimitMs, category))
+        scope.launch {
+            connectedEndpoints.forEach { connectionClient.sendPayload(it, bytes) }
         }
     }
 
@@ -145,7 +199,15 @@ class NearbyP2PDataSource(
         if (isHost) {
             val result = scoreLocally(playerId, answerId, question)
             answeredPlayerIds.add(playerId)
-            checkAllAnsweredAndAdvance()
+            
+            val isBuzzerWinner = session.value.format == com.example.germanclash.domain.model.GameFormat.BUZZER && result.wasCorrect
+            
+            if (isBuzzerWinner) {
+                // In Buzzer mode, first correct answer immediately ends the round
+                scope.launch { advanceToNextQuestion(roomId) }
+            } else {
+                checkAllAnsweredAndAdvance()
+            }
             return result
         }
 
@@ -173,20 +235,33 @@ class NearbyP2PDataSource(
         if (!isHost) return
         
         answeredPlayerIds.clear()
-        val nextNumber = session.value.currentQuestionNumber + 1
-        val length = session.value.sessionLength ?: NEARBY_SESSION_LENGTH
+        val format = session.value.format
         
-        if (nextNumber > length) {
-            session.value = session.value.copy(isFinished = true)
-        } else {
+        if (format == com.example.germanclash.domain.model.GameFormat.TIME_ATTACK) {
+            // In Time Attack, we just keep giving questions until the global timer hits zero
             session.value = session.value.copy(
                 currentQuestion = questionBank.nextQuestion(
                     previousId = session.value.currentQuestion?.id,
-                    filter = PracticeFilter()
+                    filter = PracticeFilter(category = session.value.category)
                 ),
-                currentQuestionNumber = nextNumber,
-                timeRemainingMs = NEARBY_TIME_LIMIT_MS
+                currentQuestionNumber = session.value.currentQuestionNumber + 1
             )
+        } else {
+            val nextNumber = session.value.currentQuestionNumber + 1
+            val length = session.value.sessionLength ?: NEARBY_SESSION_LENGTH
+            
+            if (nextNumber > length) {
+                session.value = session.value.copy(isFinished = true)
+            } else {
+                session.value = session.value.copy(
+                    currentQuestion = questionBank.nextQuestion(
+                        previousId = session.value.currentQuestion?.id,
+                        filter = PracticeFilter(category = session.value.category)
+                    ),
+                    currentQuestionNumber = nextNumber,
+                    timeRemainingMs = session.value.timeLimitMs
+                )
+            }
         }
         broadcastSessionUpdate()
     }
@@ -235,7 +310,8 @@ class NearbyP2PDataSource(
                     val result = scoreLocally(message.playerId, message.answerId, question)
                     
                     answeredPlayerIds.add(message.playerId)
-                    checkAllAnsweredAndAdvance()
+                    
+                    val isBuzzerWinner = session.value.format == com.example.germanclash.domain.model.GameFormat.BUZZER && result.wasCorrect
 
                     scope.launch {
                         connectionClient.sendPayload(
@@ -243,6 +319,13 @@ class NearbyP2PDataSource(
                             codec.encode(P2PMessage.RoundResultMessage(message.playerId, question?.id.orEmpty(), result))
                         )
                     }
+
+                    if (isBuzzerWinner) {
+                        scope.launch { advanceToNextQuestion(session.value.roomId) }
+                    } else {
+                        checkAllAnsweredAndAdvance()
+                    }
+                    broadcastSessionUpdate()
                 }
             }
             is P2PMessage.RoundResultMessage -> {
@@ -252,6 +335,15 @@ class NearbyP2PDataSource(
                 if (isHost) {
                     updatePlayerReadyStatus(message.playerId, message.isReady)
                     checkAllPlayersReadyAndStart()
+                }
+            }
+            is P2PMessage.GameSettingsChanged -> {
+                if (!isHost) {
+                    session.value = session.value.copy(
+                        format = message.format,
+                        timeLimitMs = message.timeLimitMs,
+                        category = message.category
+                    )
                 }
             }
         }

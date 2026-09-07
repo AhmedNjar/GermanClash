@@ -86,4 +86,13 @@ class SoloDataSource(
     override suspend fun toggleReady(roomId: String, playerId: String, isReady: Boolean) {
         // No-op for solo
     }
+
+    override suspend fun updateSettings(
+        roomId: String,
+        format: com.example.germanclash.domain.model.GameFormat,
+        timeLimitMs: Long,
+        category: String?
+    ) {
+        // No-op for solo, settings are handled via PracticeFilterState for now
+    }
 }

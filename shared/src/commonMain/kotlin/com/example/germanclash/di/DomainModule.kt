@@ -10,6 +10,7 @@ val domainModule = module {
     factory { AdvanceToNextQuestionUseCase(get()) }
     factory { StartMatchUseCase(get()) }
     factory { ToggleReadyUseCase(get()) }
+    factory { UpdateSettingsUseCase(get()) }
     factory { RecordSessionStatsUseCase(get(), get()) }
     factory { RecordAnswerStatUseCase(get()) }
     factory { GetStatsSummaryUseCase(get()) }

@@ -22,7 +22,9 @@ val featureModule = module {
             localPlayerId = localPlayerId,
             joinRoom = get(),
             observeGameSession = get(),
-            toggleReadyUseCase = get()
+            toggleReadyUseCase = get(),
+            updateSettingsUseCase = get(),
+            questionBank = get()
         )
     }
 }

@@ -37,4 +37,9 @@ interface MultiplayerDataSource {
      * start the match once all connected players are ready.
      */
     suspend fun toggleReady(roomId: String, playerId: String, isReady: Boolean)
+
+    /**
+     * Updates match settings for the session. Only meaningful for the host.
+     */
+    suspend fun updateSettings(roomId: String, format: com.example.germanclash.domain.model.GameFormat, timeLimitMs: Long, category: String?)
 }

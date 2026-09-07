@@ -46,6 +46,9 @@ class GameRepositoryImpl(
     override suspend fun toggleReady(roomId: String, playerId: String, isReady: Boolean) =
         sourceFor(roomId).toggleReady(roomId, playerId, isReady)
 
+    override suspend fun updateSettings(roomId: String, format: com.example.germanclash.domain.model.GameFormat, timeLimitMs: Long, category: String?) =
+        sourceFor(roomId).updateSettings(roomId, format, timeLimitMs, category)
+
     companion object {
         private const val LOCAL_ROOM_PREFIX = "LOCAL_"
         private const val SOLO_ROOM_PREFIX = "SOLO_"

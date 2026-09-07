@@ -189,19 +189,20 @@ fun GameContent(
                 ) {
                     Column {
                         Text(
-                            text = "Question",
+                            text = if (state.format == GameFormat.TIME_ATTACK) "Time Attack" else "Question",
                             style = MaterialTheme.typography.labelLarge,
                             color = Color.Gray
                         )
                         Text(
-                            text = "${state.currentQuestionNumber} of ${state.sessionLength ?: "?"}",
+                            text = if (state.format == GameFormat.TIME_ATTACK) "Score: ${state.localPlayerScore}" 
+                                   else "${state.currentQuestionNumber} of ${state.sessionLength ?: "?"}",
                             style = MaterialTheme.typography.titleMedium,
                             color = GameColors.TitleAccent
                         )
                     }
 
                     CountdownTimerRing(
-                        progress = state.timerProgress,
+                        progress = if (state.format == GameFormat.TIME_ATTACK) state.timeRemainingMs / 60000f else state.timerProgress,
                         secondsRemaining = (state.timeRemainingMs / 1000).toInt()
                     )
                 }

@@ -1,5 +1,6 @@
 package com.example.germanclash.data.local.serialization
 
+import com.example.germanclash.domain.model.GameFormat
 import com.example.germanclash.domain.model.GameSession
 import com.example.germanclash.domain.model.RoundResult
 import kotlinx.serialization.Serializable
@@ -29,4 +30,11 @@ sealed interface P2PMessage {
 
     @Serializable
     data class ReadyStatusChanged(val playerId: String, val isReady: Boolean) : P2PMessage
+
+    @Serializable
+    data class GameSettingsChanged(
+        val format: GameFormat,
+        val timeLimitMs: Long,
+        val category: String?
+    ) : P2PMessage
 }

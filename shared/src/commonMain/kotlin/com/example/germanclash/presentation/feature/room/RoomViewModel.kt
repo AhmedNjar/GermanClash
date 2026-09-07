@@ -6,6 +6,8 @@ import com.example.germanclash.core.result.Result
 import com.example.germanclash.domain.usecase.JoinRoomUseCase
 import com.example.germanclash.domain.usecase.ObserveGameSessionUseCase
 import com.example.germanclash.domain.usecase.ToggleReadyUseCase
+import com.example.germanclash.domain.usecase.UpdateSettingsUseCase
+import com.example.germanclash.data.local.questionbank.QuestionBank
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -19,10 +21,12 @@ class RoomViewModel(
     private val localPlayerId: String,
     private val joinRoom: JoinRoomUseCase,
     private val observeGameSession: ObserveGameSessionUseCase,
-    private val toggleReadyUseCase: ToggleReadyUseCase
+    private val toggleReadyUseCase: ToggleReadyUseCase,
+    private val updateSettingsUseCase: UpdateSettingsUseCase,
+    private val questionBank: QuestionBank
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow(RoomUiState())
+    private val _state = MutableStateFlow(RoomUiState(availableCategories = questionBank.availableCategories()))
     val state: StateFlow<RoomUiState> = _state.asStateFlow()
 
     private val _effect = MutableSharedFlow<RoomEffect>()
@@ -35,6 +39,19 @@ class RoomViewModel(
             RoomIntent.LeaveRoom -> Unit // wired once the navigation graph exists
             RoomIntent.RetryJoin -> _state.value.roomId.takeIf { it.isNotEmpty() }
                 ?.let { join(it, localPlayerId) }
+            is RoomIntent.ChangeFormat -> changeSettings(format = intent.format)
+            is RoomIntent.ChangeTimeLimit -> changeSettings(timeLimitMs = intent.timeLimitMs)
+            is RoomIntent.ChangeCategory -> changeSettings(category = intent.category)
+        }
+    }
+
+    private fun changeSettings(
+        format: com.example.germanclash.domain.model.GameFormat = _state.value.format,
+        timeLimitMs: Long = _state.value.timeLimitMs,
+        category: String? = _state.value.category
+    ) {
+        viewModelScope.launch {
+            updateSettingsUseCase(_state.value.roomId, format, timeLimitMs, category)
         }
     }
 
@@ -52,7 +69,13 @@ class RoomViewModel(
     private fun observeRoom(roomId: String) {
         observeGameSession(roomId)
             .onEach { session ->
-                _state.value = _state.value.copy(isJoining = false, players = session.players)
+                _state.value = _state.value.copy(
+                    isJoining = false,
+                    players = session.players,
+                    format = session.format,
+                    timeLimitMs = session.timeLimitMs,
+                    category = session.category
+                )
                 // startMatch() (triggered by ToggleReady below) is what gives
                 // the session a currentQuestion - once it has one, move to Game.
                 if (session.currentQuestion != null) {

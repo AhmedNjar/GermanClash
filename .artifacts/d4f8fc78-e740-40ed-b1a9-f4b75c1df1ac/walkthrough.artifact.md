@@ -1,34 +1,40 @@
-# Multiplayer Ready-up & Turn Sync Walkthrough
+# Advanced Multiplayer & Custom Rules Walkthrough
 
-I have implemented major improvements to the P2P multiplayer experience to ensure both players are synchronized and the game flow is fair and stable.
+I have implemented granular host controls and two new competitive game formats to elevate the multiplayer experience in GermanClash.
 
-## Key Improvements
+## New Features
 
-### 1. Synchronized Ready-up
-- **Shared State**: Added a `ReadyStatusChanged` message to the P2P protocol.
-- **Protocol**: When a Guest clicks "Ready up", they notify the Host. The Host updates the room state and broadcasts it to everyone.
-- **Auto-Start**: The game now only starts once **all** connected players have marked themselves as ready, preventing one-sided starts.
+### 1. Host Control Panel
+- **Lobby Settings**: Hosts can now configure the match before it starts. The new **Match Settings** card in the Lobby (`RoomScreen`) allows toggling:
+    - **Time Limit**: Choose between **1s, 3s, 5s, or 10s** per question.
+    - **Format**: Switch between **Classic, Buzzer, or Time Attack**.
+    - **Category**: Select a specific category (e.g., Animals, Travel) or play a **Mixed** deck.
+- **Guest Sync**: Settings are synchronized in real-time. Guests see a read-only view of the rules as the host changes them.
 
-### 2. Fair Turn Progression (Turn-based Sync)
-- **Host Waiting**: Redesigned the progression logic so the Host now waits for **all connected players** to submit an answer (or for the timer to expire) before advancing to the next question.
-- **Individual Scores**: Answers are scored individually, and the Host broadcasts the authoritative session state only after reconciling all results.
-- **Transition Cleanup**: Guests now see a perfectly clean transition to the next question, with all selection states reset only when a genuinely new question ID arrives from the Host.
+### 2. "Buzzer" Format
+- **First to Score**: Rounds end immediately once a player selects the correct answer.
+- **Competitive Edge**: This format rewards speed and accuracy, as being second means the question is skipped.
 
-### 3. Stability & Navigation
-- **Crash Fixed**: Wired the `LeaderboardScreen` into the navigation graph, resolving the crash on the home screen.
-- **Reliable Rematch**: Hardened the rematch logic to ensure peers stay connected and counters are reset correctly for a fresh game in the same room.
+### 3. "Time Attack" Format
+- **1-Minute Sprint**: A global 60-second timer replaces the per-question countdown.
+- **Max Score wins**: Both players answer as many questions as they can within the minute. The HUD updates to show your running score instead of question count.
+
+## Technical Refinements
+
+- **Protocol Expansion**: Added `GameSettingsChanged` to the P2P messaging layer to handle the new rule synchronization.
+- **Dynamic Logic**: Refactored `NearbyP2PDataSource` to handle per-format scoring and advancement rules (Buzzer vs Turn-based).
+- **HUD Adaptability**: The `GameScreen` UI now detects the active format and adjusts labels and timer calculations automatically.
 
 ## Verification Results
 
-### Build & Compilation
-- Project build successful.
-- Resolved missing use cases and registered them in the Koin modules.
-- Fixed `isAnswerLocked` and `selectedAnswerId` persistence bugs.
+### Logic & Synchronization
+- **Time Limits**: Verified that selecting "3s" correctly triggers the 3-second countdown on both devices.
+- **Buzzer**: Verified that a correct answer from the Host forces the Guest screen to move to the next question.
+- **Time Attack**: Verified the game ends precisely after 60 seconds and correctly accumulates scores.
 
-### UI/UX Check
-- Verified that Host selection does NOT affect Guest selection visually.
-- Verified that both devices transition to Question 2 only after both have finished Question 1.
-- Verified that "Ready" indicators in the lobby update in real-time for both players.
+### UI/UX
+- **Host UI**: Match settings are clearly presented with filter chips for easy toggling.
+- **Guest UI**: Verified that chips are disabled for guests to prevent rule conflicts.
 
 > [!TIP]
-> The Guest's "Ready" state is now authoritative - the match will wait for you!
+> Use **Buzzer Mode** with a **1s** time limit for the ultimate high-stakes German vocabulary challenge!

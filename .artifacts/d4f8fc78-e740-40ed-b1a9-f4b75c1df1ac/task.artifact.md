@@ -1,7 +1,9 @@
-- [x] Multiplayer Ready-up & Turn Sync Fixes
-    - [x] Update `P2PMessage.kt` with `ReadyStatusChanged`
-    - [x] Update `MultiplayerDataSource.kt` and implementations with `toggleReady`
-    - [x] Refactor `NearbyP2PDataSource.kt` for true ready-up and turn sync
-    - [x] Update `RoomViewModel.kt` to use `toggleReady`
-    - [x] Update `GameViewModel.kt` for clean question transitions
+- [x] Advanced Multiplayer Settings & Game Formats
+    - [x] Update `GameFormat` and `GameSession` models
+    - [x] Add `GameSettingsChanged` to `P2PMessage`
+    - [x] Update `MultiplayerDataSource` and `GameRepository` interfaces
+    - [x] Implement settings sync and Buzzer/Time Attack logic in `NearbyP2PDataSource`
+    - [x] Implement `UpdateSettingsUseCase` and wire to DI
+    - [x] Redesign `RoomScreen` with Host Match Settings UI
+    - [x] Update `RoomViewModel` to handle settings changes
 - [x] Final Verification

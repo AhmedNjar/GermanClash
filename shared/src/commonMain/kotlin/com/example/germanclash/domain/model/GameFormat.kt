@@ -7,5 +7,7 @@ enum class GameFormat {
     CLASSIC,
     MIXED,
     SPEED,
-    DAILY
+    DAILY,
+    BUZZER,
+    TIME_ATTACK
 }

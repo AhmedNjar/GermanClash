@@ -29,6 +29,7 @@ data class GameUiState(
     val isEvaluatingMismatch: Boolean = false,      // MATCH_PAIRS: brief lock while a wrong pair is shown
     val currentQuestionNumber: Int = 0,   // 1-indexed - for "Question X of Y"
     val sessionLength: Int? = null,       // null = unbounded (Firestore/Nearby today); a number ends on Results
+    val category: String? = null,
     val isFinished: Boolean = false,
     val connectionStatus: ConnectionStatus = ConnectionStatus.CONNECTED,
     val format: GameFormat = GameFormat.CLASSIC,
